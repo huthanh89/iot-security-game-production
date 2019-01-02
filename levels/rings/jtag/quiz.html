@@ -1,0 +1,26 @@
+<div ng-init="playerAnswers={}">
+    <h2 class="all-mission-header">Quiz</h2>
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>Question 1: Which of the following can mitigate the risk of a physical attack? (Check all that apply)</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.a">a. Make the device tamper proof.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.b">b. Make the device virtualized.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.c">c. Always use secret debugging interfaces.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.d">d. Disable the UART interface.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.e">e. Add buffer battery to avoid power reset.</span>
+            <br>
+            <span class='info-header'>Question 2: What of the following are good IoT security practices? (Check all that apply)</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q2.a">a. Always limit the amount of memory used in IoT Devices.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q2.b">b. Always limit the number of clicks needed to navigate the User GUI.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q2.c">c. Always limit the amount of Debug Information available on the UART interface.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q2.d">d. Always limit the voltage level on the UART Interface.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q2.e">e. Always assume that a threat actor can get in contact with the IoT Device.</span>
+            <br>
+            <span class='info-header'>Optional (not graded): Describe the steps you used to find the flag.</span>
+            <span class='info-steps'><textarea type="text" rows="6" ng-model="playerAnswers.q0"></textarea></span>
+            <br>
+            <span class="quiz-button"><button class="btn btn-primary" ng-click="submitQuiz([playerAnswers.q0, playerAnswers.q1, playerAnswers.q2])">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

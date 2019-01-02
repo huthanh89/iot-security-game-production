@@ -1,0 +1,44 @@
+{
+    "name": "Brute Force Attack Online.",
+    "description": "A brute force attack is a trial-and-error method used by application programs to decode encrpted data. In this mission, you will perform brute force attack.",
+    "tools": ["kali"],
+    "points": 30,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "CTF{JOZEF}": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "correct input",
+                        "a", ["a", "c"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

@@ -1,0 +1,121 @@
+  <form>
+
+      <div class="row top-level-container" style="display:none">
+          <div class="col-sm-4">
+              <span class="left-select-level">Select Level:</span>
+          </div>
+          <div class="col-sm-8">
+              <div class="form-group right-select-level">
+                  <select class="form-control">
+                          <option>Level 1 - Tic Tac Toe</option>
+                          <option>Level 2</option>
+                          <option>Level 3</option>
+                          <option>Level 4</option>
+                          <option>Level 5</option>
+                      </select>
+              </div>
+          </div>
+      </div>
+      <div class="row bottom-level-container" style="display:none">
+          <div class="col-sm-12">
+              <div class="row">
+                  <div class="col-sm-12">
+                      <span class="config-level">Config</span>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-4">
+                      <span class="choose-list">Number of Players:</span>
+                  </div>
+                  <div class="col-sm-8">
+                      <div class="form-group right-select-level">
+                          <select class="form-control">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option selected>4</option>
+                                  <option>5</option>
+                              </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-4">
+                      <span class="choose-list">Number of Pi:</span>
+                  </div>
+                  <div class="col-sm-8">
+                      <div class="form-group right-select-level">
+                          <select class="form-control">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                  <option>8</option>
+                                  <option selected>9</option>
+                              </select>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      
+
+      <div class="row mission-container" style="display:none">
+          <div class="col-sm-12 config-header board-header">
+              <span>Assign Missions</span>
+          </div>
+          <div class="col-sm-12 team-container borderLess-cont">
+              <div class="row  text-center inst-mission-player-cont" ng-repeat="i in [3] | makeRange">
+                  <div class="col-sm-4 bodered-cont" ng-repeat="j in [3] | makeRange">
+                      <span class="dropdown-cont">
+                              <select ng-model="arrangeList[i*3+j].missionType" ng-change='updatePlayer(i*3+j)'>
+                                  <option ng-repeat="mission in missionData">{{mission}}</option>
+                              </select>
+                          </span>
+                      <span class="dropdown-cont">
+                              <select ng-model="arrangeList[i*3+j].device">
+                                  <option ng-repeat="device in deviceData" ng-if="!device.isInfrastructure" value="{{device.ip}}">{{device.name}}</option>
+                              </select>
+                          </span>
+                      <span class="dropdown-cont">
+                              <select ng-model="arrangeList[i*3+j].playerType" ng-change='updatePlayerList(i*3+j)'>
+                                  <option value="null"></option>
+                                  <option ng-repeat="player in arrangeList[i*3+j].playerData" value="{{player.id}}">{{player.name}}</option>
+                              </select>
+                          </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+
+
+
+  <div class="modal-template" style="display:none">
+    <div class="modal-header">
+        <h5 class="modal-title" id="missionModalLabel">[[name]]
+            <button type="button" class="close" ng-click='ctrl.cancel()' aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+        </h5>
+    </div>
+    <div class="modal-body" id='modalContent'>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" ng-click='ctrl.cancel()'>Cancel</button>
+        <button type="button" class="btn btn-primary" ng-click='ctrl.ok()'>Confirm</button>
+    </div>
+</div>
+<div class="blocking-modal-template" style="display:none">
+    <div class="modal-header">
+        <h5 class="modal-title" id="missionModalLabel">[[name]]
+        </h5>
+    </div>
+    <div class="modal-body">
+        <div>[[description]]</div>
+    </div>
+</div>

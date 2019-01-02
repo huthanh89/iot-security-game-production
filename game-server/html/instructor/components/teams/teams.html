@@ -1,0 +1,109 @@
+<div class="card" ng-if="!$root.gameStarted">
+  <div class="card-header">
+    <i class="fas fa-grip-lines fa-lg float-right"></i>
+    <i class="fas fa-users fa-fw"></i>
+    Teams
+  </div>
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-sm-4 col-12">
+        <button type="button" class="btn btn-sm btn-info mb-2" data-toggle="modal" data-target="#team-add-modal" ng-click='teamText = ""'>
+          <i class="fas fa-plus fa-lg"></i>
+          Add Team
+        </button>
+        <table class="table table-sm table-responsive-sm table-hover">
+          <tbody>
+            <tr ng-class='{"selected" : team.isSelected}' ng-click='unselectAll(team)' ng-repeat='team in teamData.teams'>
+              <td>
+                {{ team.name }}
+              </td>
+              <td>
+                <i class="fas fa-pencil-alt float-right text-info" data-toggle="modal" data-target="#team-edit-modal" ng-click='clickEditIcon(team, $index)'></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-sm-3 col-5">
+        <b>
+          Members
+        </b>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action py-1" ng-repeat="team in teamData.teamPlayers" ng-if='team.selectedTeam == selectedTeam' ng-class='{"selected" : team.isSelected}' ng-click='team.isSelected = !team.isSelected'>
+              {{team.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-1 col-2">
+        <button class="btn btn-info btn-sm d-block mb-2" ng-click="moveLeft()">
+          <i class="fa fa-chevron-left fa-lg" aria-hidden="true" ></i>
+        </button>
+        
+        <button class="btn btn-info btn-sm d-block" ng-click="moveRight()">
+          <i class="fa fa-chevron-right fa-lg" aria-hidden="true" ></i>
+        </button>
+      </div>
+
+      <div class="col-sm-4 col-5">
+        <b>
+          Players
+        </b>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action py-1" ng-repeat="team in teamData.players" ng-class='{"selected" : team.isSelected}' ng-click='selectPlayer(team)'>
+            {{team.name}}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal to add team -->
+
+<div class="modal fade" id="team-add-modal" ng-init='showModal("add")'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Team</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label>Team Name</label>
+        <input type="text" class="form-control" ng-model="teamText">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal" ng-click='teamText = ""'>Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addTeam()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to edit team -->
+
+<div class="modal fade" id="team-edit-modal"  ng-init='showModal("edit")'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Team</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label>Team Name</label>
+        <input type="text" class="form-control" ng-model="teamText" >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal" ng-click='removeTeam(team, $index)'>
+          <i class="fa fa-trash"></i>
+          Delete
+        </button>
+        <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal" ng-click='teamText = ""'>Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateTeamName(team, teamText)">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+

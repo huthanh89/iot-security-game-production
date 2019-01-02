@@ -1,0 +1,15 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>While being connected to the UART serial interface from the mission <strong>JTAG</strong>, exploit the fact that the developer has left the default credentials of the device OS enabled.</span>
+            <span class='info-steps'><strong>Step 1:</strong> Try different combinations of default user names and passwords. (Hint: Google the default credentials for RPi.)</span>
+            <span class='info-steps'><strong>Step 2:</strong> Explore the files in the user's directory that might contain valuable information.</span>
+            <span class="hint">(<strong>Hint: </strong>URL).
+			<br>
+                Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class ="btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+
+</div>

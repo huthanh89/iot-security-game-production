@@ -1,0 +1,14 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-steps'>Our IoT device is using a REST API service that is sending telemetry information every 5 seconds to a remote central server. The data transfer is done only via <strong>HTTP</strong>.</span>
+            <span class='info-steps'><br>Is there any sensitive information being transmitted?</span>
+            <span class='info-steps'><br>You will need to know your IoT device's (that is, your Raspberry Pi) IP address for this mission. Remember to look at your Tools window if you are stuck!</span>
+            <span class="hint">(<strong>Hint:</strong> Flag is in the CTF{...} format.) 
+			<br>
+			 Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class = "btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

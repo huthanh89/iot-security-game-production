@@ -1,0 +1,43 @@
+{
+    "name": "Welcome!",
+    "description": "Welcome to the IoT Security Game! This brief tutorial will explain the basic gameplay.",
+    "tools": [],
+    "points": 0,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "iotsecurity": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        ["a", "b", "c"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

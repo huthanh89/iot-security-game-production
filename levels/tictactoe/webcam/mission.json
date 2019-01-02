@@ -1,0 +1,93 @@
+{
+    "name": "Webcam",
+    "description": "Webcam Unlimited is suspecting of being hacked. Being an IT Superhero, you know it's your responsibility to help. Find an unauthorized way to login to the webcam.",
+    "machines": [{
+        "name": "webcam",
+        "type": "pi",
+        "dedicated": [
+            "tcp",
+            "tcp"
+        ],
+        "setup": "machines/webcam-setup.sh",
+        "cleanup": "machines/webcam-cleanup.sh",
+        "files": {
+            "webcam.zip": "machines/webcam"
+        }
+    }],
+    "points": 100,
+    "states": {
+        "start": {
+            "text": "flag.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "right": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "correct input",
+                        "a", ["a", "c"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "start3": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "failed_login": "debug"
+            },
+            "exit": {}
+        },
+        "debug": {
+            "text": "debug.html",
+            "files": {
+                "webcam_debug_rest_api.txt": "files/webcam_debug_rest_api.txt"
+            },
+            "tools": ["nmap"],
+            "enter": {
+                "kali": "kali-unlock-nmap.sh"
+            },
+            "points": 20,
+            "events": {
+                "redirected": "fake_server"
+            },
+            "exit": {}
+        },
+        "fake_server": {
+            "text": "fake_server.html",
+            "tools": ["wireshark", "http-server"],
+            "enter": {
+                "kali": "kali-unlock-wireshark-http-server.sh"
+            },
+            "points": 30,
+            "events": {
+                "successful_login": "end"
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 50,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Privilege Escalation",
+    "description": "Well, that escalated quickly.",
+    "tools": ["usb2serial", "sudo"],
+    "points": 25,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "$1$CTFpassw$ScMuoEYGxfUev8XklEpf90": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "__feedback__", ["a", "b"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

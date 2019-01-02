@@ -1,0 +1,12 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-steps'>Decrypt the encrypted developer's password retrieved from Mission 1b.</span>
+            <span class='info-steps'><br>After copying the <b>/etc/shadow</b> file into your Kali Linux VM, use the appropriate tool to crack the password.</span>
+            <span class='info-steps'><br>The flag will be the decrypted password.</span>
+            <span class="hint"> Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class = "btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

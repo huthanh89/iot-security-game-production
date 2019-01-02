@@ -1,0 +1,33 @@
+<div class="card" ng-if="$root.gameStarted">
+  <div class="card-header">
+    <i class="fas fa-grip-lines fa-lg float-right"></i>
+    <i class="fas fa-list-ol fa-fw"></i>
+    Scoreboard
+  </div>
+  <div class="card-body">
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Score</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="team in scoreBoard">
+          <td>  
+            {{team.name}}
+          </td>
+          <td>
+            {{team.score |fixDecimal:2}}
+          </td>
+          <td>  
+            <a href="#" data-toggle="popover" scoreboard-popover-directive>
+              <i class="fas fa-search-plus fa-fw"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div ng-init="playerAnswers={}">
+    <h2 class="all-mission-header">Quiz</h2>
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>Question 1: text input (correct answer: "correct input")</span>
+            <span class='info-steps'><input type="text" ng-model="playerAnswers.q1"></span>
+            <span class='info-header'>Question 2: single answer multiple choice</span>
+            <select ng-model="playerAnswers.q2">
+                    <span class='info-steps'><option value="a">a. answer (correct)</option></span>
+                    <span class='info-steps'><option value="b">b. another</option></span>
+                </select>
+            <span class='info-header'>Question 3: multiple answer multiple choice</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q3.a">a. choice a (correct)</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q3.b">b. choice b</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q3.c">c. choice c (correct)</span>
+            <span class="quiz-button"><button class="btn btn-primary" ng-click="submitQuiz([playerAnswers.q1, playerAnswers.q2, playerAnswers.q3])">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>Every user of the IoT System can access their user profile in a cloud-based web application. In this mission, you will exploit the vulnerable web API to get the personal data of users.</span>
+            <span class='info-steps'><strong>Step 1:</strong> Try to login as a developer user and explore possible vulnerabilities that lead to personal identifying information (PII) exposure. The URL to the IoT System Cloud based web app is: http://cloud.security.game:8080/.</span>
+            <span class='info-steps'><strong>Step 2:</strong> Explore the source code of the web page to get the personal data of other users.</span>
+            <span class="hint">(<strong>Hint:</strong> Flag is in the CTF{...} format).
+			<br>
+             Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class ="btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,60 @@
+{
+    "name": "X-Ray Machine",
+    "description": "Hospital A is suspecting of being hacked. Being an IT Superhero, you know it's your responsibility to help. Find an unauthorized way to login to hospital equipment.",
+    "machines": [{
+        "name": "xray-machine",
+        "type": "pi",
+        "dedicated": [
+            "tcp",
+            "tcp"
+        ],
+        "setup": "xray-machine-setup.sh"
+    }],
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "failed_login": "firmware"
+            },
+            "exit": {}
+        },
+        "firmware": {
+            "text": "firmware.html",
+            "files": {
+                "xray-machine.firmware": "files/xray-machine.firmware"
+            },
+            "tools": ["binwalk", "nmap"],
+            "enter": {
+                "kali": "kali-unlock-binwalk-nmap.sh"
+            },
+            "points": 20,
+            "events": {
+                "telnet": "decompile"
+            },
+            "exit": {}
+        },
+        "decompile": {
+            "text": "decompile.html",
+            "tools": ["decompiler"],
+            "enter": {
+                "kali": "kali-unlock-decompiler.sh"
+            },
+            "points": 40,
+            "events": {
+                "successful_login": "end"
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 40,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

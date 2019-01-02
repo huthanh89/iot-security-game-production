@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    <i class="fas fa-grip-lines fa-lg float-right"></i>
+    <i class="fas fa-hdd fa-fw"></i>
+    Devices
+  </div>
+  <div class="card-body">
+    <table class="table table-sm table-responsive-sm table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>IP</th>
+          <th>Online</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="device in deviceData">
+          <td>
+            <span>{{device.id}}</span>
+          </td>
+          <td>
+            <span>{{device.ip}}</span>
+          </td>
+          <td>
+            <i class="text-danger fas fa-exclamation-triangle" ng-if="!device.online"></i>
+            <i class="text-success fas fa-check" ng-if="device.online"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

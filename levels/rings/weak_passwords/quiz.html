@@ -1,0 +1,20 @@
+<div ng-init="playerAnswers={}">
+    <h2 class="all-mission-header">Quiz</h2>
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>Question 1: Privilege escalation occurs when a user gets access to more resources or functionality than they are normally allowed. Which is the best recommendation to mitigate this vulnerability? (Check all that apply)</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.a">a. SecretPassword123</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.b">b. Letmein</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.c">c. $ecretP@sswordV3ryL0ng.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.d">d. A2aw5H3£"$A</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.e">e. xyz</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.f">f. MariaCarWashTheSoupInSummerCup</span>
+            <br>
+            <span class='info-header'>Optional (not graded): Describe the steps you used to find the flag.</span>
+            <span class='info-steps'><textarea type="text" rows="6" ng-model="playerAnswers.q0"></textarea></span>
+            <br>
+            <span class="quiz-button"><button class="btn btn-primary" ng-click="submitQuiz([playerAnswers.q0, playerAnswers.q1])">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

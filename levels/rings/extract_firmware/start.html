@@ -1,0 +1,11 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-steps'>Using the URL found in the mission <strong>JTAG</strong>, download and then extract the firmware within your Kali Linux VM.</span>
+            <span class='info-steps'><br>Within the extracted firmware, see if you can <strong>find</strong> any valuable information. Sources tell us that there is a <strong>credentials.conf</strong> file that might be storing something of importance...</span>
+            <span class="hint">Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class = "btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

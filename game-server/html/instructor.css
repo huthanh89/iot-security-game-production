@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('./vendor/fonts/glyphicons-halflings-regular.eot');
+  src: url('./vendor/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('./vendor/fonts/glyphicons-halflings-regular.woff') format('woff'), url('./vendor/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('.//glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+body{
+  background: #e9ebee;
+  font-family: arial;
+}
+
+.container {
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+nav{
+  background: #f8971d;
+  color: white;
+}
+
+.navbar-brand{
+  letter-spacing: 2px;
+}
+
+.card{
+  margin: 10px;
+}
+
+.card-header{
+  background: #f8971d;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.card-body{
+  border: 2px #f8971d solid;
+}
+
+#chathistory{
+  height: 200px;
+  width: 100%;
+  padding: 0 10px;
+  overflow-y: scroll;
+  border: 2px rgba(199, 198, 198, 0.24) solid;
+}
+
+#chat-to{
+  height: 40px;
+}
+
+.selected {
+  border: 2px rgba(199, 101, 101, 0.993) solid;
+  color: rgb(182, 88, 88);
+}
+
+.fa-grip-lines{
+  color: rgba(255, 255, 255, 0.623);
+  cursor: grab;
+}
+
+.fa-grip-lines:active{
+  cursor: grabbing;
+}
+
+
+/* Dashboard drag and drop */
+
+.grid {
+  position: relative;
+}
+
+.item {
+  position: absolute;
+  min-width: 50%;
+}
+
+@media only screen and (min-width: 1080px) {
+  .item {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .item {
+    width: 100%;
+  }
+}
+
+.item.muuri-item-dragging {
+  z-index: 3;
+}
+.item.muuri-item-releasing {
+  z-index: 2;
+}
+.item.muuri-item-hidden {
+  z-index: 0;
+}
+
+/* Dashboard drag and drop END */

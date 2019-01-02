@@ -1,0 +1,17 @@
+security.game. IN SOA gc.security.game. hostmaster.security.game. (
+        2018083101 ; serial
+        8H ; refresh
+        4H ; retry
+        4W ; expire
+        1D ; minimum
+)
+
+security.game. IN NS gc.security.game.
+localhost       IN A 127.0.0.1
+gc              IN A 10.1.1.5
+game-controller IN A 10.1.1.5
+game-server     IN A 10.1.1.5
+game            IN A 10.1.1.5
+router          IN A 10.1.1.1
+switch          IN A 10.1.1.1
+cloud           IN A 10.1.1.32

@@ -1,0 +1,14 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-steps'>The developer may have left some public facing services running on the IoT cloud server with the address of 10.1.1.32.</span>
+            <span class='info-steps'><br>Use NMAP to discover any active listening ports on the remote IoT device, and see if you can make use of that service.</span>
+            <span class='info-steps'><br>When in doubt, try telnet ;).</span>
+            <span class="hint"> (<strong>Hint:</strong> Flag is in the MTOD message)
+            <br>
+			Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class = "btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

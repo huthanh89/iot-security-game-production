@@ -1,0 +1,43 @@
+{
+    "name": "Extract the Firmware",
+    "description": "Time to explore the contents of the firmware.",
+    "tools": ["kali", "wget", "binwalk"],
+    "points": 50,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "CTF{compromised}": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "__feedback__", ["a", "b"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "Default credentials",
+    "description": "Good job coming so far. In this mission, you will exploit the default credentials left open by the developer and look for valuable information in the user directory files.",
+    "tools": ["usb2serial","putty"],
+    "points": 20,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "http://cloud.security.game/iot/newFirmwareFile.bin": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "__feedback__",
+                         ["b", "d"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

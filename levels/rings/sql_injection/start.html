@@ -1,0 +1,14 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>In a recent CVE entry, it was discovered that a local web server running on the IoT device is vulnerable to an SQL Injection type of attack. In this mission, you will perform SQL Injection to obtain valuable information hidden in a table name in the database that holds the data records. The vulnerable URL is = http://[[studentPiIP]]:8080/add/test?temperature=26</span>
+            <span class='info-steps'><strong>Step 1:</strong> From the Kali Linux VM, start a terminal session and use the sqlmap tool to discover the database structure (DBtype and DBname).</span>
+            <span class='info-steps'><strong>Step 2:</strong> After discovering the database name (vulnSensors), use the sqlmap tool to discover the table names in the database.</span>
+            <span class="hint">(<strong>Hint:</strong> Name of the database table).
+			<br>
+             Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class ="btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

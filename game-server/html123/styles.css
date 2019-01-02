@@ -1,0 +1,1427 @@
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('./lib/fonts/glyphicons-halflings-regular.eot');
+    src: url('./lib/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('./lib/fonts/glyphicons-halflings-regular.woff') format('woff'), url('./lib/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('./lib/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.outer-container {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    background: #EEEEEE;
+}
+.container {
+    background: #00BCEB;
+    padding: 0 40px;
+    border: 1px solid #eceaea;
+    border-radius: 5px;
+    box-shadow: 1px 1px 11px 2px #e6e6e6;
+}
+.login-cont {
+    border: 1px solid #e0dbdb;
+    padding: 30px 60px;
+    margin-top: 50px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    background: #fff;
+}
+.network-image-cont {
+    margin-top: 70px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin-left: 10px;
+    background: #005073;
+}
+
+.login-header {
+    font-size: 30px;
+    color: #0198e6;
+    font-weight: bold;
+    text-align: center;
+}
+
+.infoDiv {
+    margin-top: 50px;
+}
+
+.leftDiv {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #005073;
+    color: #fff;
+}
+
+.rightDiv {
+    background: #005073;
+    color: #fff;
+    padding-bottom: 20px;
+}
+
+.inner-right-div {
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.player-title {
+    border-bottom: 1px solid #fff;
+    text-align: center;
+}
+
+.player-title .col-xs-4 {
+    border-right: 1px solid #fff;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.chat-msg{
+    color:black;
+}
+.player-list-cont {
+    border-top: 1px solid #fff;
+}
+
+.player-list-cont:first-child {
+    border: none;
+}
+
+.selectedPlayer {
+    font-weight: bold;
+    background-color: black;
+}
+
+.player-list-cont .col-xs-4 {
+    border-right: 1px solid #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.player-list-cont .col-xs-4:last-child {
+    border-right: none;
+}
+
+.mission-login-title {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.top-mission-image {
+    border-bottom: 1px solid white;
+}
+
+.mission-title {
+    display: block;
+    font-weight: bold;
+    color: #24acf3;
+}
+
+.button-cont {
+    display: block;
+    margin-top: 20px;
+}
+
+.button-cont button {
+    width: 65px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.mission-sub-title {
+    display: block;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-size: 20px;
+}
+
+p {
+    margin-left: 55px;
+}
+
+.classBold {
+    font-weight: bold;
+}
+
+.loginFailed {
+    color: red
+}
+
+.xray-image {
+    background-image: url("./images/image2.png");
+}
+
+.xray {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0px;
+}
+
+.loginImageSection img,
+.playerSection img,
+.internet img {
+    width: 40px;
+    display: table;
+    margin: auto;
+    height: 40px;
+}
+
+.loginImageSection {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.playerSection {
+    display: flex;
+    align-items: center;
+}
+
+.loginImageSection,
+.internet {
+    margin-bottom: 7%;
+}
+
+.loginImageSection p {
+    margin: 0px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.loginImageSection h1 {
+    color: #fff;
+}
+
+.xray.server {
+    flex-direction: column;
+}
+
+.hospitalIntranet:before {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 62px;
+    transform: rotate(20deg);
+    left: 56%;
+    top: 34%;
+}
+
+.intraNet:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 212px;
+    transform: rotate(-61deg);
+    left: 218px;
+    bottom: -117px;
+}
+
+.part:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 88px;
+    left: 106px;
+    top: 152px;
+}
+
+.xray-machine:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 58px;
+    transform: rotate(-27deg);
+    left: 38%;
+    top: 39%;
+}
+
+.server:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 45px;
+    left: 50%;
+    top: 41%;
+}
+
+.internetImg:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 226px;
+    left: 68%;
+    transform: rotate(-65deg);
+    top: -36px;
+}
+
+.switch:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 225px;
+    left: -28%;
+    transform: rotate(65deg);
+    top: 80px;
+}
+
+.switchOne:after {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 271px;
+    left: -78%;
+    transform: rotate(65deg);
+    top: 80px;
+}
+
+.score-board-cont {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #005073;
+    margin-top: 70px;
+    color: #fff;
+}
+
+.player1:before {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 225px;
+    left: 190px;
+    transform: rotate(68deg);
+    bottom: -21px;
+}
+
+.player2:before {
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 95px;
+    left: 114px;
+    transform: rotate(36deg);
+    bottom: 41px;
+}
+
+.xRayDiv {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+}
+
+.IntranetDiv {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+}
+
+.switchDiv {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+}
+
+.playerSection p {
+    font-size: 10px;
+    margin: 0px;
+    text-align: center;
+    color: #fff;
+}
+
+.internetImg p {
+    text-align: center;
+    margin: 0;
+    font-size: 10px;
+}
+
+.more-icon {
+    color: #fff;
+}
+
+.form-actions button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    border: 5px solid blue;
+}
+
+
+/* visited link */
+
+a:visited {
+    color: black;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: hotpink;
+}
+
+
+/* selected link */
+
+a:active {
+    color: blue;
+}
+
+blink-text {
+    @keyframes blink {
+        to {
+            color: red;
+        }
+    }
+    .my-element {
+        color: blue;
+        animation: blink 1s steps(2, start) infinite;
+    }
+}
+
+body {
+    background: #EEEEEE;
+}
+
+
+/*Instructor CSS*/
+
+.inst-dash-container {
+    height: auto;
+    width: 95%;
+    border-radius: 10px;
+    background-color: #1caaf3;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.inst-score-board {
+    margin-left: 15px;
+}
+
+.top-level-container {
+    padding: 10px;
+    height: 60px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 96%;
+}
+
+.inst-board-content {
+    border-bottom: 1px solid gray;
+    background: lightgray;
+    height: 38vh;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.left-select-level {
+    margin-left: 35px;
+    display: block;
+    font-size: 16px;
+    margin-top: 6px;
+}
+
+.bottom-level-container {
+    width: 96%;
+    height: 190px;
+    background-color: #f2f2f2;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.config-header {
+    display: block;
+    text-align: center;
+    padding: 6px;
+    margin: auto;
+}
+
+.add-remove-rename {
+    margin: 5px auto;
+}
+
+.choose-list {
+    display: block;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+.inst-submit {
+    margin: 10px 0px 0px -35px;
+}
+
+.team-selection,
+.mission-container {
+    width: 96%;
+    background-color: #f2f2f2;
+    margin-left: 40px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.team-content .team-info {
+    padding: 0;
+    height: 62vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 2px solid gray;
+    border-top: 0px;
+    border-right: 0px;
+}
+
+.team-content .team-info:nth-child(2),
+.team-content .team-info:nth-child(4) {
+    border-right: 2px solid gray;
+}
+
+.team-one {
+    background-color: gray;
+    width: 48%;
+    height: 35px;
+    margin-left: 14px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.team-two {
+    background-color: gray;
+    width: 48%;
+    height: 35px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.greater-symbol {
+    background-image: url(images/Greater_Than-512.png);
+    display: inline-block;
+    width: 16px;
+    height: 27px;
+    background-size: cover;
+    opacity: 0.6;
+    margin-top: 10px;
+}
+
+.greater-symbol:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.lessthan-symbol {
+    background-image: url(images/less-than.png);
+    display: inline-block;
+    width: 25px;
+    height: 40px;
+    background-size: cover;
+    opacity: 0.6;
+    margin-top: 10px;
+}
+
+.lessthan-symbol:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+.arrow-container {
+    text-align: center;
+    display: block;
+    padding-bottom: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+.arrow-container .glyphicon{
+    opacity: 0.5;
+    
+}
+.arrow-container .glyphicon:hover{
+    opacity: 1;
+}
+
+.table-head {
+    display: block;
+    text-align: center;
+}
+
+.team-name {
+    display: block;
+    text-align: center;
+    border-bottom: 2px solid gray;
+    padding: 10px;
+}
+
+.team-name .form-control {
+    display: inline-block;
+    width: 70%;
+}
+
+.team-name:hover {
+    cursor: pointer;
+    background: #005073;
+    color: white;
+}
+
+.team-name .btn-sm {
+    padding: 5px;
+    font-size: 10px;
+}
+
+
+.team-title {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    border-left: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+.player-title {
+    padding: 13.6px;
+    border-right: 2px solid gray;
+}
+
+.team-content .player-info {
+    padding: 13px;
+}
+
+.bodered-cont {
+    border-right: 1px solid gray;
+    padding: 23px;
+}
+
+.dropdown-cont {
+    display: block;
+    padding: 5px;
+}
+
+.dropdown-cont select {
+    width: 100px;
+}
+
+.team-container .inst-mission-player-cont {
+    border-bottom: 1px solid gray;
+}
+
+.team-container .inst-mission-player-cont:first-child {
+    border-top: 0px;
+}
+
+.team-container .inst-mission-player-cont:last-child {
+    border-bottom: 0px;
+}
+
+.team-container .inst-mission-player-cont .bodered-cont:nth-child(3n+1) {
+    border-left: 0px;
+}
+
+.team-container .inst-mission-player-cont .bodered-cont:nth-child(3n) {
+    border-right: 0px;
+}
+
+.mission-container {
+    margin-top: 20px;
+    height: 455px
+}
+
+.footer-button {
+    border: 2px solid gray;
+    border-top: 0px;
+    background: lightgray;
+}
+
+.footer-button button {
+    padding: 10px 35px 7px 40px;
+}
+
+.selected {
+    background: #005073;
+    color: white;
+}
+
+.inst-head {
+    font-size: 30px;
+    font-weight: bold;
+    background: #F5F5F5;
+    color: black;
+    border-radius: 5px;
+    display: block;
+    margin: 20px 40px 0px;
+}
+
+.data-table-row {
+    height: 38vh;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.data-table-row1 {
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.data-table-row .col-sm-3 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.data-content {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+.data-title {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.data-value {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.red-dot,
+.green-dot {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.red-dot {
+    background: red;
+}
+
+.green-dot {
+    background: green;
+}
+
+.player-data-container {
+    background: lightgray;
+    border-radius: 5px;
+    margin-left: -20px;
+    margin-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-right: 1px;
+}
+
+.player-data-container:last-child {
+    margin-bottom: 0;
+}
+
+.player-header {
+    padding: 5px;
+}
+
+
+/*Student Dashboard CSS*/
+
+.st-dash-container {
+    height: auto;
+    width: 85%;
+    border-radius: 10px;
+    background-color: #1caaf3;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.game-header {
+    background: #444444;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+}
+
+.st-head {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    background: #444444;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.game-container {
+    width: 60%;
+    margin: auto;
+}
+
+.st-bodered-cont {
+    border: 2px solid #fff;
+    border-top: 0px;
+}
+
+.score-board {
+    margin-left: 0;
+}
+
+.board-header {
+    background: #444444;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.game-board {
+    display: block;
+    padding: 20px;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.team, .score {
+    display: inline-block;
+    text-align: center;
+    width: 44%;
+    font-size: 16px;
+    padding: 5px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.board-content {
+    border-radius: 0px 0px 5px 5px;
+    border-bottom: 1px solid gray;
+    background: lightgray;
+    height: 35vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.middle-cont {
+    position: relative;
+    transition: all 1s;
+}
+
+.hide-arrow {
+    position: absolute;
+    top: 59%;
+    left: -2%;
+    z-index: 2;
+    background: #000;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+.expanded-cont {
+    margin-left: -380px;
+    transition: all 1s;
+}
+
+.team-cont {
+    display: inline-block;
+    width: 50%;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+
+.team-text {
+    margin-top: 5px;
+}
+
+.score-inner-cont {
+    padding-left: 25px;
+}
+
+.team-data {
+    list-style-type: lower-alpha;
+    margin-bottom: -8px;
+}
+
+ol:last-child {
+    margin-bottom: 0px;
+}
+
+.chat-board {
+    color: #000;
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.st-chat-board {
+    margin-left: 0px;
+}
+
+.chat-header {
+    background: #444444;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.inst-chat-header {
+    display: block;
+}
+
+.chat-title {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+.chat-to {
+    display: inline-block;
+    padding: 5px 20px;
+    margin-top: 5px;
+    margin-left: -52px;
+}
+
+.chat-content {
+    height: 15vh;
+    background: #fff;
+    color: #000;
+    overflow: auto;
+}
+
+.chat-history {
+    height: 27vh;
+}
+
+.chat-content .form-group {
+    margin-bottom: 0;
+}
+
+.chat-content:last-child {
+    height: 10vh;
+    border-radius: 0 0 10px 10px;
+}
+
+#chathistory {
+    float: left;
+    text-align: left;
+}
+
+textarea {
+    border: 0px;
+}
+
+.red-circle {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url(images/greentick.jpeg);
+    background-size: cover;
+}
+
+.mission-board {
+    margin-right: 0px;
+}
+
+.table-content {
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.student-waiting {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 300px;
+}
+
+.student-waiting .blink span {
+    font-size: 58px;
+    font-family: cursive;
+    color: white;
+    animation: blink 5s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.mission-header {
+    background: #444444;
+    color: #fff;
+    font-weight: bold;
+    border-left: 1px solid lightgray;
+    text-align: center;
+    width: 97%;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.mission-board-content {
+    border-bottom: 1px solid gray;
+    background: lightgray;
+    min-height: 400px;
+}
+
+.mission-content {
+    padding: 20px;
+    border-bottom: 1px solid gray;
+    background: lightgray;
+    min-height: 400px;
+    margin-right: 10px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.mission-sub-title {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.tools-container {
+    margin-top: 10px;
+}
+
+.tools-header {
+    background: #444444;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    width: 97%;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.tools-content {
+    border-radius: 5px;
+    height: 42vh;
+    background: #fff;
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.img-icon {
+    display: block;
+    padding: 50px;
+    text-align: center;
+}
+
+.img-center-icon {
+    margin-right: 120px;
+}
+
+.glyphicon.glyphicon-one-fine-dot:before {
+    content: "\25cf";
+    font-size: 5.5em;
+    opacity: 1 !important;
+    color: red;
+}
+
+.glyphicon.glyphicon-one-fine-tick:before {
+    content: "\25cf";
+    font-size: 5.5em;
+    opacity: 1 !important;
+    color: green;
+}
+
+.completeT1 {
+    color: red;
+}
+
+.completeT2 {
+    color: green;
+}
+
+.inCompleteT1 {
+    color: skyblue;
+}
+
+.inCompleteT2 {
+    color: orange;
+}
+
+.active-image {
+    opacity: 0.3;
+}
+
+.active-image:before {
+    opacity: 0.3 !important;
+}
+
+.in-game {
+    display: none;
+}
+
+.tools-image {
+    width: 100%;
+    height: 10vh;
+    border: 3px solid #005073;
+    margin-top: 10px;
+    border-radius: 3px 3px 0 0;
+}
+
+.image-action {
+    display: block;
+    background: #58585B;
+    color: #fff;
+    text-align: center;
+    border-radius: 0 0 3px 3px;
+    font-size: 11px;
+    padding: 3px;
+    height: 40px;
+}
+
+
+/*image-tooltip classes start*/
+
+.image-container {
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+
+.image-tooltip {
+    width: 160px;
+    position: absolute;
+    display: none;
+    top: 0;
+    background: #005073;
+    z-index: 555;
+    left: -25px;
+    border-radius: 5px;
+}
+
+.image-container:hover .image-tooltip {
+    display: block;
+}
+
+.tooltip-image {
+    width: 100%;
+    height: 130px;
+}
+
+.tt-image-desc {
+    border-radius: 3px;
+    background: #fff;
+    color: #005073;
+    margin: 5px;
+    display: block;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.desc-tag {
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+.notification-history {
+    padding: 20px;
+    border-bottom: 1px solid gray;
+    background: lightgray;
+    height: 35vh;
+    margin-right: 10px;
+    border-radius: 0px 0px 5px 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.user {
+    float: right;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+
+/*Login Register Css starts here*/
+
+.login-form-container {
+    height: 600px;
+    background: #00BCEB;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 30%;
+    margin-left: 140px;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+}
+
+.login-header {
+    color: #444444;
+    font-weight: bold;
+    border-right: 1px solid lightgray;
+    border-radius: 5px 5px 0px 0px;
+    margin-top: 75px;
+    text-align: center;
+}
+
+.login .register {
+    display: inline-block;
+    width: 49%;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+}
+
+.register-header {
+    color: #444444;
+    font-weight: bold;
+    border-right: 1px solid lightgray;
+    border-radius: 5px 5px 0px 0px;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.register {
+    margin-left: 43px;
+}
+
+.login-form-content {
+    margin-top: 40px;
+    padding: 25px;
+}
+
+.login-email {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.login-pass {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.login-email input {
+    height: 40px;
+}
+
+.login-button {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.login-button input {
+    height: 40px;
+}
+
+.foot-lnk {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sign-up-htm {
+    padding: 30px;
+}
+
+
+/*Login Register CSS end here*/
+
+.modal-open {
+    overflow: scroll;
+}
+
+.tictactoe-cont svg {
+    position: relative;
+    left: -100px;
+}
+
+.mission-modal-window .modal-dialog {
+    width: 100%;
+    margin-top: 83px;
+}
+
+.alert-modal-window .modal-header {
+    background: red;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.alert-modal-window .green-header {
+    background: green;
+}
+
+.alert-modal-window .modal-body {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.alert-modal-window .modal-sm {
+    margin-top: 200px;
+}
+
+.modal-open .modal {
+    width: 42.5%;
+    margin: 0 auto;
+}
+.modal-open {
+    padding-right: 0px !important;
+}
+
+.mission-modal-window .modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-content-data .modal-body {
+    padding: 0px;
+}
+
+.modal-content-data .modal-header {
+    text-align: center;
+    background: #005073;
+    color: white;
+}
+
+.modal-content-data .modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.all-mission-header {
+    padding: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0px;
+    text-decoration: underline;
+}
+
+.all-mission-content {
+    padding: 10px 50px;
+}
+
+.info-header {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.info-header img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.info-steps {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-steps textarea {
+    width: 100%;
+    border: solid 1px black;
+}
+
+.hint {
+    margin-top: 20px;
+    display: block;
+}
+
+.quiz-button {
+    display: block;
+    text-align: center;
+}
+
+.desc-info-header {
+    padding: 20px;
+    font-weight: bold;
+}
+
+.quiz-result {
+    text-align: center;
+}
+
+.quiz-score {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.quiz-remediation {
+    font-weight: bold;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.quiz-feedback {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.plus-icon {
+    display: inline-block;
+}
+
+.edit-delete {
+    display: inline-block;
+}
+
+.added-team-name {
+    display: inline-block;
+    width: 71%;
+}
+
+.modal-header .close {
+    opacity: 1;
+    color: #FFFFFF;
+    font-size: 3
+}
+
+.team-member-container{
+    display: block;
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+.team-member-names{
+    margin-right: 5px;
+    display: inline-block;
+}
+.team-member-names:after{
+    content:",";
+    
+}
+.team-member-names:last-child:after{
+    content:" ";
+    
+}
+textarea {
+  resize: none;
+}

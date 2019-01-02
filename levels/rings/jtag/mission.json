@@ -1,0 +1,44 @@
+{
+    "name": "JTAG",
+    "description": "JTAG is a standardized interface for debugging integrated circuits which you can also use to debug a Raspberry Pi. In this mission, you will verify the serial connectivity using the UART GPIO pins, and exploit the debug interface on RPi that was left open by the developer.",
+    "tools": ["usb2serial", "uart_gpio", "putty"],
+    "points": 10,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "CTF{JOZEF}": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "__feedback__", ["a", "d"],
+                        ["c", "e"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

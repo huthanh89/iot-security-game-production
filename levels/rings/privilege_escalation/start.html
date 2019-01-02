@@ -1,0 +1,14 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-steps'>We are getting closer to getting into the developer's account. The developer has modified the <b>sudo</b> command to only allow admin users to execute trusted commands. However, from a 0-day vulnerability report, we discovered that the <b>/bin/cat</b> command is enabled in the sudo configuration for any file in the <b>/etc</b> directory for debugging purposes.</span>
+            <span class='info-steps'><br>Using this information, see if you can find anything useful in <b>/etc/shadow</b>.</span>
+            <span class="hint">(<strong>Hint:</strong> You must use the full file path after the <strong>/bin/cat</strong> command.)
+            <span class="hint">(<strong>Hint:</strong> Flag is an encrypted password hash.)
+            <br>
+			Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class = "btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

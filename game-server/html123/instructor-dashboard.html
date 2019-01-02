@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Instructor Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+    <script src="instructor.js"></script>
+    <script type="text/javascript">
+        mxBasePath = 'lib/src';
+    </script>
+    <script src="lib/mxClient.min.js"></script>
+    <script src="lib/highcharts.js"></script>
+    <script src="lib/data.js"></script>
+    <script src="lib/drilldown.js"></script>
+</head>
+
+<body ng-app="gameApp" ng-controller="instructorCtrl" style="background-color:#444444; margin: 0 auto;overflow-x: hidden ">
+    <audio id="play" src="images/chatSound.wav" autostart="false"></audio>
+    <div class="row">
+        <div class="col-sm-12 ">
+            <span class="inst-head text-center">
+				Instructor Dashboard
+				<button class="btn btn-xs" style="float:right" ng-click="showSettings()">Settings</button>
+			</span>
+        </div>
+    </div>
+    <div class="inst-dash-container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="row inst-score-board">
+                    <div class="col-sm-12 board-header">
+                        <span class="team">Team</span>
+                        <span class="score">Score</span>
+                    </div>
+                    <div class="col-sm-12 inst-board-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ol>
+                                    <li class="team-text" ng-repeat="team in scoreBoard">
+                                        <span class="team-cont" uib-tooltip="{{team.name}}" tooltip-append-to-body="true" tooltip-placement="top" tooltip-enable="team.name.length > 10" style="margin-right:20px;">{{team.name}}
+                                            </span>
+                                        <span class="score-cont score-cont-num">{{team.score |fixDecimal:2}}</span>
+                                        <ol style="margin-top: -5px;">
+                                            <li class="team-data" ng-repeat="player in team.players">
+                                                <span class="team-cont" uib-tooltip="{{player.name}}" tooltip-append-to-body="true" tooltip-placement="top" tooltip-enable="player.name.length > 15">{{player.name}}</span>
+                                                <span class="score-cont">{{player.score |fixDecimal:2}}</span>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row chat-board">
+                    <div class="col-sm-12 chat-header">
+                        <span class="chat-title">Chat</span>
+                    </div>
+                    <div class="col-sm-12 chat-content chat-history">
+                        <div id='chathistory'>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 chat-content">
+                        <div class="form-group">
+                            <textarea class="form-control chat-msg" rows="1" id="comment" ng-model="chatMsg" ng-keyup="$event.keyCode == 13 ? sendChat() : null"></textarea>
+                            <span class="inst-chat-header">
+                                    <button class="btn btn-success" style="float:right; margin-top: 5px" ng-click="sendChat()">Send</button>
+                                    <span class="chat-to">To:
+                                        <select ng-model="chatTo">
+                                            <option ng-repeat="to in chatToList" ng-value="to" ng-disabled="to.disabled">{{to.name}}</option>
+                                        </select>
+                                    </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 student-progress-bar" id="container" style="min-width: 310px; height: 400px;" ng-show="hideConfig"></div>
+            <div class="col-sm-6 config-cont" ng-show="!hideConfig">
+                <div class="config-center">
+                    <form>
+                        <div class="row top-level-container" style="display:none">
+                            <div class="col-sm-4">
+                                <span class="left-select-level">Select Level:</span>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group right-select-level">
+                                    <select class="form-control">
+                                            <option>Level 1 - Tic Tac Toe</option>
+                                            <option>Level 2</option>
+                                            <option>Level 3</option>
+                                            <option>Level 4</option>
+                                            <option>Level 5</option>
+                                        </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row bottom-level-container" style="display:none">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <span class="config-level">Config</span>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <span class="choose-list">Number of Players:</span>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group right-select-level">
+                                            <select class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option selected>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <span class="choose-list">Number of Pi:</span>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group right-select-level">
+                                            <select class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option selected>9</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row team-selection">
+                            <div class="col-sm-12 config-header board-header">
+                                <span>Assign Teams</span>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row team-header">
+                                    <div class="col-sm-4 team-title">
+                                        <span style="width:70%; display: inline-block; text-align: center;">Teams</span>
+                                        <button type="button" class="btn btn-default btn-sm" ng-click="isAddTeam = true">
+                                                <span class="glyphicon glyphicon-plus plus-icon"></span>
+                                            </button>
+                                    </div>
+                                    <div class="col-sm-4 team-title player-title"><span>Team Players</span></div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-3 team-title player-title"><span>Unassigned</span></div>
+                                </div>
+                                <div class="row team-content">
+                                    <div class="col-sm-4 team-info">
+                                        <span class="team-name" ng-class='{"selected" : team.isSelected}' ng-click='unselectAll(team)' ng-repeat='team in teamData.teams'>
+                                                <span class="added-team-name" ng-show='!team.isEdit'>{{team.name}}</span>
+                                        <input type="text" class="form-control" ng-model='team.name' ng-show='team.isEdit' ng-keyup="$event.keyCode == 13 ?updateTeam(team) : null">
+                                        <span class="edit-delete">
+                                                    <button type="button" class="btn btn-default btn-sm" ng-click='updateTeam(team);'>
+                                                        <span class="glyphicon glyphicon-edit"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-click='removeTeam(team,$index)'>
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                        </span>
+                                        </span>
+                                        <span class="team-name" ng-show='isAddTeam'>
+                                                <input type="text" class="form-control" ng-model='teamText' ng-keyup="$event.keyCode == 13 ?addTeam() : null" >
+                                                <span class="edit-delete">
+                                                    <button type="button" class="btn btn-default btn-sm" ng-click='addTeam();isAddTeam=false;'>
+                                                        <span class="glyphicon glyphicon-edit"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-click='teamText = "";isAddTeam = false'>
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                        </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-4 team-info">
+                                        <span class="team-name player-info" ng-repeat="team in teamData.teamPlayers" ng-if='team.selectedTeam == selectedTeam' ng-class='{"selected" : team.isSelected}' ng-click='team.isSelected = !team.isSelected'>{{team.name}}
+                                            </span>
+                                    </div>
+                                    <div class="col-sm-1" style="padding-top: 80px;">
+                                        <span class="arrow-container">
+                                                <span class="glyphicon glyphicon-chevron-left" ng-click="moveRight()"></span>
+                                        </span>
+                                        <span class="arrow-container">
+                                                <span class="glyphicon glyphicon-chevron-right" ng-click="moveLeft()">
+                                                </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-3 team-info ">
+                                        <span class="team-name player-info" ng-repeat="team in teamData.players" ng-class='{"selected" : team.isSelected}' ng-click='selectPlayer(team)'>{{team.name}}
+                                            </span>
+                                    </div>
+                                </div>
+                                <div class="row text-right footer-button">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-success" style="margin-top: 5px;margin-bottom: 5px;" ng-click="start()">Start</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mission-container" style="display:none">
+                            <div class="col-sm-12 config-header board-header">
+                                <span>Assign Missions</span>
+                            </div>
+                            <div class="col-sm-12 team-container borderLess-cont">
+                                <div class="row  text-center inst-mission-player-cont" ng-repeat="i in [3] | makeRange">
+                                    <div class="col-sm-4 bodered-cont" ng-repeat="j in [3] | makeRange">
+                                        <span class="dropdown-cont">
+                                                <select ng-model="arrangeList[i*3+j].missionType" ng-change='updatePlayer(i*3+j)'>
+                                                    <option ng-repeat="mission in missionData">{{mission}}</option>
+                                                </select>
+                                            </span>
+                                        <span class="dropdown-cont">
+                                                <select ng-model="arrangeList[i*3+j].device">
+                                                    <option ng-repeat="device in deviceData" ng-if="!device.isInfrastructure" value="{{device.ip}}">{{device.name}}</option>
+                                                </select>
+                                            </span>
+                                        <span class="dropdown-cont">
+                                                <select ng-model="arrangeList[i*3+j].playerType" ng-change='updatePlayerList(i*3+j)'>
+                                                    <option value="null"></option>
+                                                    <option ng-repeat="player in arrangeList[i*3+j].playerData" value="{{player.id}}">{{player.name}}</option>
+                                                </select>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="row player-data-container">
+                    <div class="col-sm-12 board-header player-header text-center">Player Info</div>
+                    <div class="col-sm-12 inst-board-content">
+                        <div class="row data-table-row1">
+                            <div class="row" style="margin: 0px">
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-title">Name</div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-title">Dashboard</div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-title">Kali</div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-title">Pi</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0px;" ng-repeat="player in playerData">
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-value">
+                                        {{player.name}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-value">
+                                        <span class="green-dot" ng-if="player.viewOnline"></span>
+                                        <span class="red-dot" ng-if="!player.viewOnline"></span>
+                                        <span ng-if="player.viewOnline">{{player.ip}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-value">
+                                        <span class="green-dot" ng-if="player.kaliOnline"></span>
+                                        <span class="red-dot" ng-if="!player.kaliOnline"></span>
+                                        <span ng-if="player.kaliOnline">{{player.kaliIp}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="col-sm-12 data-value">
+                                        <span class="green-dot" ng-if="player.pi.online"></span>
+                                        <span class="red-dot" ng-if="!player.pi.online"></span>
+                                        <span ng-if="player.pi.online">{{player.pi.ip}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row player-data-container">
+                    <div class="col-sm-12 board-header player-header text-center">Other Devices Info</div>
+                    <div class="col-sm-12">
+                        <div class="row data-table-row">
+                            <div class="row" style="margin: 0px">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12 data-title">ID</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12 data-title">IP</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12 data-title">Online</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0px;" ng-repeat="device in deviceData">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12 data-value" ng-if="device.player == null">{{device.id}}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12 data-value" ng-if="device.player == null">{{device.ip}}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12 data-value" ng-if="device.player == null">
+                                        <span class="green-dot" ng-if="device.online"></span>
+                                        <span class="red-dot" ng-if="!device.online"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-template" style="display:none">
+        <div class="modal-header">
+            <h5 class="modal-title" id="missionModalLabel">[[name]]
+                <button type="button" class="close" ng-click='ctrl.cancel()' aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </h5>
+        </div>
+        <div class="modal-body" id='modalContent'>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" ng-click='ctrl.cancel()'>Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click='ctrl.ok()'>Confirm</button>
+        </div>
+    </div>
+    <div class="blocking-modal-template" style="display:none">
+        <div class="modal-header">
+            <h5 class="modal-title" id="missionModalLabel">[[name]]
+            </h5>
+        </div>
+        <div class="modal-body">
+            <div>[[description]]</div>
+        </div>
+    </div>
+    <div class="settings-modal-template" style="display:none">
+        <div class="modal-header">
+            <h5 class="modal-title">Settings
+                <button type="button" class="close" ng-click='ctrl.cancel()' aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+            </h5>
+        </div>
+        <div class="modal-body">
+            <div>
+                <input type="checkbox" ng-model="ctrl.enableInternet"> Internet
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" ng-click='ctrl.cancel()'>Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click='ctrl.ok()'>Confirm</button>
+        </div>
+    </div>
+</body>
+
+</html>

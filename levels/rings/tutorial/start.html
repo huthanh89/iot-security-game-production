@@ -1,0 +1,12 @@
+<div ng-init="playerAnswers={}">
+    Let's go over your dashboard.
+    <br><br>The Game Map displays your missions. The missions are represented by Circles. When you complete a mission, you unlock the next mission indicated by the dotted arrows. Some missions may require you to complete more than 1 mission to unlock. To start a mission, click on an unlocked Circle. <font color = "yellow">Yellow</font> Circles indicate they are unlocked. <font color = "gray">Gray</font> Circles indicate they are locked. <font color = "blue">Blue</font> Circles indicate they are completed.
+    <br><br>On the top left, you'll see the Scoreboard. Here, you will see how you and your team are performing against the opposing teams. Also, a minimap available so you can visually track the progress of the other teams.
+    <br><br>Moving on to the bottom left, we have the chat box. Here you can chat with everyone participating in the game. You can send messages directly to certain users, the instructor, or broadcast a message to the entire class or just within your own team. Remember to keep it civil!
+    <br><br>On the top right, the Notification panel will display important messages sent by the instructor or the game server.  Keep an eye out!
+    <br><br>Finally, we have the Tools panel which will display the tools needed to complete the mission. If you are stuck on a particular mission, be sure to check out your tools for hints on how to overcome it.
+    <br><br>To complete each mission, you must find the hidden flag using your Raspberry Pi and a variety of hacking tools available through your Kali Linux VM. As an example, enter <b>iotsecurity</b> for the flag below.
+    <br><br> Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+    <button ng-click="submitFlag(playerAnswers.flag)">Submit</button>
+	<br><br>
+</div>

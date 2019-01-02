@@ -1,0 +1,17 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>In this mission, you verify the serial connectivity using UART GPIO pins and exploit the debug interface on RPi that was left open by the developer.</span>
+            <span class='info-header'><img src = "images/pi-usb2ttl.jpg"></span>
+            <span class='info-header'>For this mission, gather with your teammates and complete it together.</span>
+            <span class='info-steps'><strong>Step 1:</strong> Connect the USB2Serial cable to the UART GPIO pins on the RPi.</span>
+            <span class='info-steps'><strong>Step 2:</strong> Start a serial console session from a terminal emulator (115200 bps) into the RPi to explore the input banner for the flag.</span>
+            <span class='info-steps'><strong>Step 3:</strong> Explore the banner on the login prompt to find the flag.</span>
+            <span class="hint">(<strong>Hint:</strong> Flag in this format CTF{...}).
+			<br>
+                Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null" >
+			<button class ="btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

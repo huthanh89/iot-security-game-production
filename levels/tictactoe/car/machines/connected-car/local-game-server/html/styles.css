@@ -1,0 +1,360 @@
+.outer-container{
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    background: #EEEEEE;
+        
+}
+.container{
+    background: #00BCEB;/*#251f1fbf;*/
+    padding: 0 40px;
+    border: 1px solid #eceaea;
+    border-radius: 5px;
+    box-shadow: 1px 1px 11px 2px #e6e6e6;
+}
+.login-cont {
+    border: 1px solid #e0dbdb;
+    padding: 30px 60px;
+    margin-top: 50px;
+    border-radius: 5px;
+   margin-bottom:40px;
+    background: #fff;
+}
+.network-image-cont{
+    margin-top: 70px;
+    border: 1px solid #fff; 
+    border-radius: 5px;
+    margin-left:10px;
+    background:#005073;
+}
+.login-header {
+    font-size: 30px;
+    color: #0198e6;
+    font-weight: bold;
+    text-align: center;
+}
+
+.infoDiv {
+    margin-top: 50px;
+}
+
+.leftDiv {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background:#005073;
+    color:#fff;
+}
+.rightDiv{
+   background: #005073;
+    color: #fff;
+    padding-bottom: 20px; 
+}
+
+.inner-right-div {
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.player-title {
+    border-bottom: 1px solid #fff;
+}
+
+.player-title .col-xs-4 {
+    border-right: 1px solid #fff;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*
+    .player-title .col-xs-4:last-child{
+       border-right:none;
+    }
+*/
+
+.player-list-cont {
+    border-top: 1px solid #fff;
+}
+
+.player-list-cont:first-child {
+    border: none;
+}
+
+.selectedPlayer {
+    font-weight: bold;
+    background-color: black;
+}
+
+.player-list-cont .col-xs-4 {
+    border-right: 1px solid #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.player-list-cont .col-xs-4:last-child {
+    border-right: none;
+}
+
+.mission-login-title {
+    display: inline-block;
+    font-size: 16px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-family:monospace;
+}
+
+.top-mission-image {
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.mission-title {
+    display: block;
+    font-weight: bold;
+    color: #24acf3;
+}
+
+.button-cont {
+    display: block;
+    margin-top: 20px;
+}
+
+.button-cont button {
+    width: 65px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.mission-sub-title {
+    display: block;
+}
+
+p {
+    margin-left: 55px;
+}
+
+.classBold {
+    font-weight: bold;
+}
+
+.loginFailed {
+    color: red
+}
+
+.xray-image {
+    background-image: url("./images/image2.png");
+}
+.xray{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0px;
+}
+.loginImageSection img,.playerSection img,.internet img{
+    width: 40px;
+    display: table;
+    margin: auto;
+    height: 40px;
+}
+.loginImageSection{
+    /*background-color: #f1f1f1;*/
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-top:15px;
+}
+.playerSection{
+    display: flex;
+    align-items: center;
+}
+.loginImageSection,.internet{
+    margin-bottom: 7%;
+}
+.loginImageSection p{
+    margin: 0px;
+    text-align: center;
+    font-size: 10px;
+}
+.loginImageSection h1{
+    color:#fff;
+}
+.xray.server{
+    flex-direction: column;
+}
+.hospitalIntranet:before{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 62px;
+    transform: rotate(20deg);
+    left: 56%;
+    top: 34%;
+}
+.intraNet:after{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 212px;
+    transform: rotate(-61deg);
+    left: 218px;
+    bottom: -117px;
+}
+.part:after{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 88px;
+    left: 106px;
+    top: 152px;
+}
+.xray-machine:after{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 58px;
+    transform: rotate(-27deg);
+    left: 38%;
+    top: 39%;
+}
+.server:after{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 45px;
+    left: 50%;
+    top: 41%;
+}
+.internetImg:after{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 226px;
+    left: 68%;
+    transform: rotate(-65deg);
+    top: -36px;
+}
+.switch:after{
+   content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 225px;
+    left: -28%;
+    transform: rotate(65deg);
+    top: 80px;
+}
+.switchOne:after{
+   content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 271px;
+    left: -78%;
+    transform: rotate(65deg);
+    top: 80px;
+}
+.score-board-cont{
+  border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #005073;
+    margin-top: 70px;
+    color: #fff;  
+}
+.player1:before{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 225px;
+    left: 190px;
+    transform: rotate(68deg);
+    bottom: -21px;
+
+}
+.player2:before{
+    content: '';
+    border-left: 2px solid #000;
+    position: absolute;
+    height: 95px;
+    left: 114px;
+    transform: rotate(36deg);
+    bottom: 41px;
+
+}
+.xRayDiv{
+    border:1px solid #fff;
+    border-radius:5px;
+    background:#fff;
+    color:#000;
+    
+}
+.IntranetDiv{
+     border:1px solid #fff;
+      border-radius:5px;
+     background:#fff;
+    color:#000;
+}
+.switchDiv{
+     border:1px solid #fff;
+      border-radius:5px;
+     background:#fff;
+    color:#000;
+}
+.playerSection p{
+    font-size:10px;
+    margin: 0px;
+    text-align: center;
+    color:#fff;
+}
+.internetImg p{
+    text-align: center;
+    margin: 0;
+    font-size: 10px;
+}
+.more-icon{
+    color:#fff;
+}
+.form-actions button{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.highlight{
+    
+    border:5px solid blue;
+}
+
+a {
+    color:#eef112;
+}
+
+/* visited link */
+/*a:visited {
+    color: pink;
+}*/
+a:visited {
+    color: #eef112;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: #eef112;
+}
+blink-text{
+    @keyframes blink {
+        to { color: red; }
+    }
+    .my-element {
+        color: blue;
+        animation: blink 1s steps(2, start) infinite;
+    }
+}
+body {
+    height: 100%;
+
+
+    background: #EEEEEE;
+}

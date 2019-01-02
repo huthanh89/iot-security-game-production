@@ -1,0 +1,16 @@
+<div ng-init="playerAnswers={}">
+    Quiz
+    <br> Question 1: text input
+    <input type="text" ng-model="playerAnswers.q1">
+    <br> Question 2: single answer multiple choice
+    <select ng-model="playerAnswers.q2">
+		<option value="a">a. answer</option>
+		<option value="b">b. another</option>
+	</select>
+    <br> Question 3: multiple answer multiple choice
+    <br><input type="checkbox" ng-model="playerAnswers.q3.a">a. choice a
+    <br><input type="checkbox" ng-model="playerAnswers.q3.b">b. choice b
+    <br><input type="checkbox" ng-model="playerAnswers.q3.c">c. choice c
+    <br>
+    <button ng-click="submitQuiz([playerAnswers.q1, playerAnswers.q2, playerAnswers.q3])">Submit</button>
+</div>

@@ -1,0 +1,44 @@
+{
+    "name": "Play with the HTTP query parameters",
+    "description": "Good job coming so far. In this mission, you will perform SQL Injection on a vulnerable URL to obtain valuable information hidden in a table name in the database that holds the data records.",
+    "tools": ["kali", "sqlmap"],
+    "points": 60,
+    "states": {
+        "start": {
+            "text": "start.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "flag": {
+                    "CTFpwned": "quiz"
+                }
+            },
+            "exit": {}
+        },
+        "quiz": {
+            "text": "quiz.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {
+                "quiz": {
+                    "answers": [
+                        "__feedback__",
+                         ["b", "e"]
+                    ],
+                    "nextState": "end"
+                }
+            },
+            "exit": {}
+        },
+        "end": {
+            "text": "end.html",
+            "tools": [],
+            "enter": {},
+            "points": 0,
+            "events": {},
+            "exit": {}
+        }
+    }
+}

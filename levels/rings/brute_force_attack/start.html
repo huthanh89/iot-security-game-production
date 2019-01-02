@@ -1,0 +1,15 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>In this mission, you will perform brute force attack to central web server.</span>
+            <span class='info-steps'><strong>Step 1:</strong> Connect the USB2Serial cable that is provided to you to the UART GPIO pins on the RPi.</span>
+            <span class='info-steps'><strong>Step 2:</strong> Start a serial console session from a terminal emulator into the RPi to explore the input banner for the flag.</span>
+            <span class='info-steps'><strong>Step 3:</strong> Explore the banner on the login prompt to find the flag.</span>
+            <span class="hint">(<strong>Hint:</strong>flag is Developer).
+                Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class ="btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br> Flag=CTF{JOZEF}
+        </div>
+    </div>
+
+</div>

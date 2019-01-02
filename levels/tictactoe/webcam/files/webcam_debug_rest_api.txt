@@ -1,0 +1,25 @@
+Webcam Unlimited VS4000
+Debug REST API
+
+================================================================
+
+Protocol: standard HTTP
+Port: undetermined
+
+==========================================================================
+
+URL: /info
+Description: Returns information about the webcam.
+
+Method: GET
+Params: None
+Response: JSON object
+
+==========================================================================
+
+URL: /set_cloud_server
+Description: Sets the cloud server address the webcam reports to.
+
+Method: POST
+Params: address, a string representing the address of the cloud server
+Response: ok

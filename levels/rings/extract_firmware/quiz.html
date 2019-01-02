@@ -1,0 +1,18 @@
+<div ng-init="playerAnswers={}">
+    <h2 class="all-mission-header">Quiz</h2>
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>Question 1: Which of the following is considered a good mitigation strategy for firmware extraction? (Check all that apply)</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.a">a. Use an encrypted and authenticated session for downloading firmware.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.b">b. Encrypt the filesystem.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.c">c. Put the download server behind a firewall.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.d">d. Provide the firmware only using USB flash storage.</span>
+            <br>
+            <span class='info-header'>Optional (not graded): Describe the steps you used to find the flag.</span>
+            <span class='info-steps'><textarea type="text" rows="6" ng-model="playerAnswers.q0"></textarea></span>
+            <br>
+            <span class="quiz-button"><button class="btn btn-primary" ng-click="submitQuiz([playerAnswers.q0, playerAnswers.q1])">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Game Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scripts/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/progressbar.min.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <div class="infoDiv">
+            <div class="row" style="border: 1px solid gray; padding: 20px; border-radius: 10px; background-color: #005073;">
+                <div class="col-md-12 rightDiv">
+                    <div class="inner-right-div" ng-if="!startLogin">
+                        <h2 style="text-align: center">IoT Security Labs</h2>
+                        <label>Select Lab</label>
+                        <select class='form-control' id='labs'>
+                               <option value="Connected Car" selected >Connected Car</option>
+                               <option value="Connected Factory" >Connected Factory</option>
+                               <option value="Power Grid" >Power Grid</option>
+                               <option value="Others" >...</option>
+                        </select>
+                        <div class="row">
+                            <div class=" col-xs-12 form-actions text-center ">
+                                <button ng-click="startLoginProcess();" class="btn btn-primary btn-lg">Start</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoDiv" ng-if="startLogin">
+                        <div class="col-md-8 rightDiv inner-right-div" style="width: 1049px;">
+                            <div ng-show="missionStarted && !missionCompleted">
+                                <div class="top-mission-image">
+                                    <img src="images/network.png" style="margin-left: 200px;height: 500px; width: 633px;">
+                                </div>
+                                <div class="progressBar" id="progressBar" style="margin: 20px 0;"></div>
+
+                                <br><br>
+                                <div>
+                                    <span class="mission-login-title">Campaign: Automaker A is auditing their car network. Being an IT Superhero, you know it's your responsibility to help. Find an unauthorized way to take control of the car.</span>
+                                    <span class="mission-sub-title">Mission 1: Reconnaissance</span>
+                                    <p>Try logging in to the car's cloud server: <a style="color:#eef112" href="http://car-cloud.local" target="_blank">http://car-cloud.local</a>.</p>
+                                </div>
+                                <div ng-if="unlockedMission =='2a' || unlockedMission=='3a' ">
+                                    <span class="mission-sub-title">Mission 2: Physical Access</span>
+                                    <p>Your team sent you schematics on the OBD-II port on the car.Make a connection to it using your Pi. <a style="color:#eef112" href="/downloads/car-schematics.jpg" target="_blank">Download schematics </a></p>
+                                    <p>Pick the car's lock or use social engineering attacks to gain access to the car.</p>
+                                </div>
+                                <div ng-if="unlockedMission =='3a' ">
+                                    <span class="mission-sub-title">Mission 3: CAN Bus</span>
+                                    <p>Now that your pi is connected to the car's OBD-II port, use the pyobd script to read states and write commands to the car.</p>
+                                    <p>New tools have been unlocked in your pi: pyobd</p>
+                                </div>
+                                <div ng-if="unlockedMission =='2b' || unlockedMission=='3b' ">
+                                    <span class="mission-sub-title"> Mission 2: Debug Messages</span>
+                                    <p>Good snooping around the web inspector.</p>
+                                    <p>Use testuser username to login and check out the debug messages.</p>
+                                </div>
+                                <div ng-if="unlockedMission=='3b' ">
+                                    <span class="mission-sub-title"> Mission 3: SQL Injection</span>
+                                    <p>Try some SQL injection to get into the server.</p>
+                                </div>
+                            </div>
+                            <div ng-show="missionCompleted" style=" text-align: center " class="blink-text">
+                                <h3>Campaign Completed!</h3>
+                                <h2>You win!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

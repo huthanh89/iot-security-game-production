@@ -1,0 +1,12 @@
+<div ng-init="playerAnswers={}">
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-steps'>Exploit the Telnet service on the remote IoT device using the credentials you retrieved in the mission <strong>Extract the Firmware</strong>.</span>
+            <span class="hint">(<strong>Hint:</strong> Flag is in the MOTD message.) 
+			<br>
+			 Enter flag: <input type="text" ng-model="playerAnswers.flag" ng-keyup="$event.keyCode == 13 ? submitFlag(playerAnswers.flag) : null">
+            <button class = "btn btn-primary" ng-click="submitFlag(playerAnswers.flag)">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div ng-init="playerAnswers={}">
+    <h2 class="all-mission-header">Quiz</h2>
+    <div class="row">
+        <div class="col-sm-12 all-mission-content disable-answers-[[disableAnswers]]">
+            <span class='info-header'>Question 1: What is the recommended best practice for addressing this vulnerability? (Check all that apply)</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.a">a. Provide backdoor management services protected by password.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.b">b. Run multiple network services on the same node.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.c">c. Use only well-known port for running network services.</span>
+            <span class='info-steps'><input type="checkbox" ng-model="playerAnswers.q1.d">d. Do not keep running any remote management services created to be used in only in development.</span>
+            <br>
+            <span class='info-header'>Optional (not graded): Describe the steps you used to find the flag.</span>
+            <span class='info-steps'><textarea type="text" rows="6" ng-model="playerAnswers.q0"></textarea></span>
+            <br>
+            <span class="quiz-button"><button class="btn btn-primary" ng-click="submitQuiz([playerAnswers.q0, playerAnswers.q1])">Submit</button> <i>[[otherPlayerInProgress]]</i></span>
+            <br>[[answers]]
+        </div>
+    </div>
+</div>

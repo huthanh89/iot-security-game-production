@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8" />
+      <title>Instructor Dashboard</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="vendor/angular.min.js"></script>
+      <script src="vendor/ui-bootstrap-tpls-3.0.6.min.js"></script>
+      <script src="vendor/jquery.min.js"></script>
+
+      <!–– 
+        Online Vendor Scripts; 
+        TODO: Download these scripts and add them to vendor folder.
+      ––>
+      
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.core.js"></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.4/muuri.min.js"></script>
+      
+
+      <!–– Application Scripts ––>
+
+      <link rel="stylesheet" type="text/css" href="instructor.css">
+      <script src="api.js"></script>
+      <script src="app.js"></script>
+      <script src="instructor.js"></script>
+      <script src="instructor/services/playerdata.js"></script>
+      <script src="instructor/services/websocket.js"></script>
+      <script src="instructor/components/navbar/navbar.js"></script>
+      <script src="instructor/components/scoreboard/scoreboard.js"></script>
+      <script src="instructor/components/chat/chat.js"></script>
+      <script src="instructor/components/chart/chart.js"></script>
+      <script src="instructor/components/device/device.js"></script>
+      <script src="instructor/components/setting/setting.js"></script>
+      <script src="instructor/components/players/players.js"></script>
+      <script src="instructor/components/teams/teams.js"></script>
+      <script src="instructor/components/start/start.js"></script>
+
+      <script type="text/javascript">
+          mxBasePath = 'vendor/src';
+      </script>
+
+      <!–– Vendor Scripts ––>
+
+      <script src="vendor/mxClient.min.js"></script>
+      <script src="vendor/highcharts.js"></script>
+      <script src="vendor/data.js"></script>
+      <script src="vendor/drilldown.js"></script>
+  </head>
+
+  <body ng-app="gameApp" ng-controller="instructorCtrl">
+      <audio id="play" src="images/chatSound.wav" autostart="false"></audio>
+
+      <navbar></navbar>
+
+      <div class="container" ng-init='sort()'>
+        
+        <div class="row ">
+            <div class="col-lg-12">
+              <setting></setting>
+              <start></start>
+            </div>
+        </div>
+        
+        <div class="grid">
+          <div class="item">
+            <scoreboard></scoreboard>
+          </div>
+          <div class="item">
+            <chart></chart>
+          </div>
+          <div class="item">
+            <teams></teams>
+          </div>
+          <div class="item">
+            <players></players>
+          </div>
+          <div class="item">
+            <chat></chat>
+          </div>
+          <div class="item">
+            <devices></devices>
+          </div>
+        </div>
+
+      </div>
+
+  </body>
+</html>

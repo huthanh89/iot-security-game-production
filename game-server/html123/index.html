@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Game Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="gameApp" ng-controller="myCtrl">
+        <div class="row " ng-show='!startLogin'>
+            <div class="col-md-5 score-board-cont">
+                <h1 style="text-align: center; font-family: sans-serif; font-weight: bold">Score board</h1>
+                <div>
+                    <div class="row player-title">
+                        <div class="col-xs-4">Rank</div>
+                        <div class="col-xs-4">Name</div>
+                        <div class="col-xs-4">Score</div>
+                    </div>
+                    <div class="row player-list-cont" ng-class="{'selectedPlayer':player.name === loggedInUser.username}" ng-repeat="player in scores">
+                        <div class="col-xs-4 player-info">{{ player.rank }}</div>
+                        <div class="col-xs-4 player-info">{{ player.name }}</div>
+                        <div class="col-xs-4 player-info">{{ player.score }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row network-image-cont">
+                    <div class="col-xs-12 loginImageSection">
+                        <div class="col-xs-4">
+                            <div class="xRayDiv">
+                                <div class="xray">
+                                    <div class="xray-machine">
+                                        <img src="images/img1.jpg" class="img-responsive xrayHighlight">
+                                        <p>xraymachine</p>
+                                    </div>
+                                    <div class="hospita-server">
+                                        <img src="images/img2.jpg" class="img-responsive hospitalHighlight">
+                                        <p>hospital-server</p>
+                                    </div>
+                                </div>
+                                <div class="hospital">
+                                    <div class="hospitalIntranet intraNet">
+                                        <img src="images/img3.jpg" class="img-responsive">
+                                        <p>Hospital-Intranet</p>
+                                    </div>
+                                </div>
+                                <p>Player1 Compaign</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="IntranetDiv">
+                                <div class="xray">
+                                    <div class="xray-machine">
+                                        <img src="images/img4.jpg" class="img-responsive webCamHighlight">
+                                        <p>Webcam</p>
+                                    </div>
+                                    <div class="hospita-server">
+                                        <img src="images/img2.jpg" class="img-responsive webCamCloudHighlight">
+                                        <p>Webcam-Cloud</p>
+                                    </div>
+                                </div>
+                                <div class="hospital">
+                                    <div class="hospitalIntranet part">
+                                        <img src="images/img3.jpg" class="img-responsive">
+                                        <p>Part of Internet</p>
+                                    </div>
+                                </div>
+                                <p>Player2 Compaign</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <h1>...</h1>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="switchDiv">
+                                <div class="xray server">
+                                    <img src="images/img2.jpg" class="img-responsive ">
+                                    <p>ServerX</p>
+                                </div>
+                                <div class="hospital switch">
+                                    <img src="images/img5.jpg" class="img-responsive ">
+                                    <p>SwitchX</p>
+                                </div>
+                                <p>Playerx Compaign</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 internet">
+                        <div class="internetImg">
+                            <img src="images/img3.jpg" class="img-responsive">
+                            <p style="color: #fff">Internet</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 playerSection">
+                        <div class="col-xs-3">
+                            <div class="player player1">
+                                <img src="images/img6.jpg" class="img-responsive playerOneHighlight">
+                                <p>Player1</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="player player2">
+                                <img src="images/img6.jpg" class="img-responsive  playerTwoHighlight">
+                                <p>Player2</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 more-icon">
+                            <h1>...</h1>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="player">
+                                <img src="images/img6.jpg" class="img-responsive">
+                                <p>PlayerX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" col-xs-12 form-actions text-center ">
+                    <button ng-click="startLoginProcess();" class="btn btn-primary btn-lg">Login</button>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-md-6 col-md-offset-3 login-cont" ng-if="startLogin && !loginSuccess">
+                <form name="form" ng-submit="login(user)" method="post" role="form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" ng-model="user.username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" ng-model="user.password" />
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" ng-disabled="submitData" class="btn btn-primary" ng-click="startMission()">Login</button>
+                    </div>
+                </form>
+                <div class="loginFailed" ng-if="loginFailed">Invalid username or password</div>
+            </div>
+        </div>
+
+        <div class="infoDiv" ng-if="loginSuccess">
+            <div class="row" style="border: 1px solid gray; padding: 20px; border-radius: 10px; background-color: #005073;">
+                <div class="col-md-4 leftDiv ">
+                    <div class="row player-title">
+                        <div class="col-xs-4">Rank</div>
+                        <div class="col-xs-4">Name</div>
+                        <div class="col-xs-4">Score</div>
+                    </div>
+                    <div class="row player-list-cont" ng-class="{'selectedPlayer':player.name === loggedInUser.username}" ng-repeat="player in scores">
+                        <div class="col-xs-4 player-info">{{ player.rank }}</div>
+                        <div class="col-xs-4 player-info">{{ player.name }}</div>
+                        <div class="col-xs-4 player-info">{{ player.score }}</div>
+                    </div>
+                </div>
+                <div class="col-md-8 rightDiv">
+                    <div class="inner-right-div">
+                        <div ng-show="missionStarted && !missionCompleted && !otherMissionCompleted">
+                            <div class="top-mission-image">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-xs-12 loginImageSection">
+                                            <div class="col-xs-4">
+                                                <div class="xRayDiv">
+                                                    <div class="xray">
+                                                        <div class="xray-machine">
+                                                            <img src="images/img1.jpg" class="img-responsive xrayHighlight">
+                                                            <p>xraymachine</p>
+                                                        </div>
+                                                        <div class="hospita-server">
+                                                            <img src="images/img2.jpg" class="img-responsive hospitalHighlight ">
+                                                            <p>hospital-server</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hospital">
+                                                        <div class="hospitalIntranet intraNet">
+                                                            <img src="images/img3.jpg" class="img-responsive ">
+                                                            <p>Hospital-Intranet</p>
+                                                        </div>
+                                                    </div>
+                                                    <p>Player1 Compaign</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <div class="IntranetDiv">
+                                                    <div class="xray">
+                                                        <div class="xray-machine">
+                                                            <img src="images/img4.jpg" class="img-responsive webCamHighlight">
+                                                            <p>Webcam</p>
+                                                        </div>
+                                                        <div class="hospita-server">
+                                                            <img src="images/img2.jpg" class="img-responsive  webCamCloudHighlight">
+                                                            <p>Webcam-Cloud</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hospital">
+                                                        <div class="hospitalIntranet part">
+                                                            <img src="images/img3.jpg" class="img-responsive">
+                                                            <p>Part of Internet</p>
+                                                        </div>
+                                                    </div>
+                                                    <p>Player2 Compaign</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <h1>...</h1>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <div class="switchDiv">
+                                                    <div class="xray server">
+                                                        <img src="images/img2.jpg" class="img-responsive">
+                                                        <p>ServerX</p>
+                                                    </div>
+                                                    <div class="hospital switchOne">
+                                                        <img src="images/img5.jpg" class="img-responsive">
+                                                        <p>SwitchX</p>
+                                                    </div>
+                                                    <p>Playerx Compaign</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 internet">
+                                            <div class="internetImg">
+                                                <img src="images/img3.jpg" class="img-responsive">
+                                                <p>Internet</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 playerSection">
+                                            <div class="col-xs-3">
+                                                <div class="player player1">
+                                                    <img src="images/img6.jpg" class="img-responsive playerOneHighlight">
+                                                    <p>Player1</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="player player2">
+                                                    <img src="images/img6.jpg" class="img-responsive playerTwoHighlight ">
+                                                    <p>Player2</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <h1>...</h1>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="player">
+                                                    <img src="images/img6.jpg" class="img-responsive">
+                                                    <p>PlayerX</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="unlockedMission >=1 && loggedInUser.username === 'player1'">
+                                <span class="mission-login-title">Campaign: Hospital A is suspecting of being hacked. Being an IT Superhero, you know it's your responsibility to help. Find an unauthorized way to login to the hospital server.</span>
+                                <span class="mission-sub-title">Mission 1: Reconnaissance</span>
+                                <p>Try login into <a href="#">http://hospital-server</a> investigate its website</p>
+                            </div>
+                            <div ng-if="unlockedMission >=2 && loggedInUser.username === 'player1'">
+                                <span class="mission-sub-title">Mission 2: X-Ray Machine firmware</span>
+                                <p>Your comrades found the firmware of the X-Ray machine. <a href="#">Download</a></p>
+                                <p>New tools have been unlocked in your Kali:</p>
+                                <ul style="margin-left: 45px">
+                                    <li>nmap - scan for open ports on remote devices</li>
+                                </ul>
+                            </div>
+                            <div ng-if="unlockedMission >=3 && loggedInUser.username === 'player1'">
+                                <span class="mission-sub-title">Mission 3: Decompile Firmware</span>
+                                <p>Your team found out that the firmware was actually a python bytecode file.</p>
+                                <p>New tools have been unlocked in your kali:</p>
+                                <ul style="margin-left: 45px">
+                                    <li>uncompyle6 - decompile python bytecode files</li>
+                                </ul>
+                            </div>
+                            <div ng-if="unlockedMission >=1 && loggedInUser.username === 'player2'">
+                                <span class="mission-login-title">Campaign: Webcam Unlimited is suspecting of being hacked. Being an IT Superhero, you know it's your responsibility to help. Find an unauthorized way to login to the webcam.</span>
+                                <span class="mission-sub-title">Mission 1: Reconnaissance</span>
+                                <p>Try login into the webcam's local web server. <a href="#">http://webcam</a> and its cloud server <a href="#">http://webcam-cloud</a></p>
+                            </div>
+                            <div ng-if="unlockedMission >=2 && loggedInUser.username === 'player2'">
+                                <span class="mission-sub-title">Mission 2: Webcam debug API</span>
+                                <p>Your team found that your webcam has a debug REST API running on some port. <a href="#">Download API Specs</a></p>
+                                <p>New tools have been unlocked in your kali:</p>
+                                <ul style="margin-left: 45px">
+                                    <li>nmap - scan for open ports on remote devices</li>
+                                </ul>
+                            </div>
+                            <div ng-if="unlockedMission >=3 && loggedInUser.username === 'player2'">
+                                <span class="mission-sub-title">Mission 3: Faux Cloud Server</span>
+                                <p>Good job redirecting the webcam cloud connection to another server.</p>
+                                <p>New tools have been unlocked in your kali:</p>
+                                <ul style="margin-left: 45px">
+                                    <li>wireshark - capture packets </li>
+                                    <li>SimpleHTTPServer - simple python web serve</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div ng-show="missionCompleted" style=" text-align: center " class="blink-text">
+                            <h3>Campaign Completed!</h3>
+                            <h2>You win!</h2>
+                        </div>
+                        <div ng-show="otherMissionCompleted" style="text-align: center">
+                            <h3>The other player's campaign completed before you did!</h3>
+                            <h2>You lose!</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

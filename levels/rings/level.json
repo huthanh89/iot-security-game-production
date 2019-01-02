@@ -1,0 +1,50 @@
+{
+    "name": "Rings",
+    "type": "rings",
+    "config": [{}],
+    "missions": [{
+        "0": {
+            "dir": "jtag",
+            "next": ["1a"]
+        }
+    }, {
+        "1a": {
+            "dir": "default_credentials",
+            "next": ["1b", "1c"]
+        },
+        "1b": {
+            "dir": "privilege_escalation",
+            "next": ["1d"]
+        },
+        "1c": {
+            "dir": "extract_firmware",
+            "next": ["2a", "2c"]
+        },
+        "1d": {
+            "dir": "weak_passwords",
+            "next": ["2a", "2c"]
+        }
+    }, {
+        "2a": {
+            "dir": "port_scan",
+            "next": ["2b"]
+        },
+        "2b": {
+            "dir": "remote_access",
+            "next": ["3b"]
+        },
+        "2c": {
+            "dir": "unencrypted_protocols",
+            "next": ["3a"]
+        }
+    }, {
+        "3a": {
+            "dir": "sql_injection",
+            "next": []
+        },
+        "3b": {
+            "dir": "insecure_webapis",
+            "next": []
+        }
+    }]
+}

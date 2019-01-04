@@ -30,11 +30,11 @@
           </td>
           <td>
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.kaliOnline"></i>
-            <span ng-if="player.kaliOnline">{{player.kaliIp}}</span>
+            <span>{{player.kaliIp}}</span>
           </td>
           <td>
-            <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.pi.viewOnline"></i>
-            <span ng-if="player.pi.viewOnline">{{player.pi.ip}}</span>
+            <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.pi.online"></i>
+            <span>{{player.pi.ip}}</span>
           </td>
         </tr>
       </tbody>

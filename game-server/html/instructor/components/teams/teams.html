@@ -28,7 +28,9 @@
 
       <div class="col-sm-3 col-5">
         <b>
-          Members
+          <u>
+            Members
+          </u>
         </b>
         <ul class="list-group">
           <li class="list-group-item list-group-item-action py-1" ng-repeat="team in teamData.teamPlayers" ng-if='team.selectedTeam == selectedTeam' ng-class='{"selected" : team.isSelected}' ng-click='team.isSelected = !team.isSelected'>
@@ -48,7 +50,9 @@
 
       <div class="col-sm-4 col-5">
         <b>
-          Players
+          <u>
+            Players
+          </u>
         </b>
         <ul class="list-group">
           <li class="list-group-item list-group-item-action py-1" ng-repeat="team in teamData.players" ng-class='{"selected" : team.isSelected}' ng-click='selectPlayer(team)'>

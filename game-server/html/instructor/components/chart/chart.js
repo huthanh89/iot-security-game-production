@@ -10,9 +10,19 @@ function Controller($scope, $rootScope, $filter){
   $scope.updateChart = function() {
     // Create the chart
     Highcharts.chart('chart-container', {
-        chart: {
-            type: 'column'
+
+      chart: {
+
+          type: 'column',
+
+            events: {
+              load: function(){
+                $rootScope.refreshGrid();
+              },
+
+            }
         },
+
         title: {
             text: 'Team Progress'
         },

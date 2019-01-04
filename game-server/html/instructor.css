@@ -18,7 +18,7 @@ body{
 }
 
 nav{
-  background: #f8971d;
+  background: #097DBC;
   color: white;
 }
 
@@ -31,14 +31,14 @@ nav{
 }
 
 .card-header{
-  background: #f8971d;
+  background: #049FD9 ;
   color: white;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
 .card-body{
-  border: 2px #f8971d solid;
+  border: 2px #049FD9  solid;
 }
 
 #chathistory{
@@ -102,3 +102,7 @@ nav{
 }
 
 /* Dashboard drag and drop END */
+
+.modal{
+  color:black;
+}

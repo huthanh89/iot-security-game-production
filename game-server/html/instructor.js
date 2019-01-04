@@ -18,8 +18,7 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
 
     /** Function to play beep sound */
     $rootScope.playSound = function() {
-      var sound = document.getElementById('play');
-      sound.play();
+      document.getElementById('play').play();
     }
 
     // Connect to Web Socket.

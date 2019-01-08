@@ -1,0 +1,15 @@
+<div class="modal-template" style="display:none">
+  <div class="modal-header" ng-class="{'green-header':isSuccess}">
+    <h5 class="modal-title" id="missionModalLabel">[[name]]
+        <button type="button" class="close" ng-click='ctrl.cancel()' aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </h5>
+  </div>
+  <div class="modal-body">
+      <div>[[description]]</div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" ng-click='ctrl.cancel()'>OK</button>
+  </div>
+</div>

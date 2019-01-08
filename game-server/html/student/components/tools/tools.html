@@ -1,0 +1,30 @@
+<div id="tools" class="card">
+  <div class="card-header">
+    <i class="fas fa-grip-lines fa-lg float-right"></i>
+    <i class="fas fa-tools fa-fw"></i>
+    Tools
+  </div>
+  <div id="tools-container" class="card-body">
+
+    <table class="table table-sm table-hover table-borderless">
+      <tbody>
+        <tr class="" ng-repeat="tool in currentTools track by $index" ng-Click='itemClicked($index)'>
+          <td>  
+            <div class="tools-image-container">
+              <img class="tools-image" ng-src="{{tool.img}}" />
+            </div>
+          </td>
+          <td>
+            <b class="d-block">
+              {{tool.name}}  
+            </b>
+            {{tool.desc}}  
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

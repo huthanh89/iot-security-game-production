@@ -10,7 +10,7 @@ body{
 }
 
 .container {
-  background: white;
+  background: none;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 20px;
@@ -67,7 +67,6 @@ nav{
   cursor: grabbing;
 }
 
-
 /* Dashboard drag and drop */
 
 .grid {
@@ -76,16 +75,27 @@ nav{
 
 .item {
   position: absolute;
-  min-width: 50%;
+  min-width: 33%;
 }
 
-@media only screen and (min-width: 1080px) {
+@media only screen and (min-width: 1200px) {
   .item {
-    max-width: 50%;
+    width: 33%;
+  }
+  .container{
+    width: 95%;
+    max-width: 100%;
+    background: none;
   }
 }
 
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 1200px) {
+  .item {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .item {
     width: 100%;
   }

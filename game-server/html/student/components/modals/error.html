@@ -1,0 +1,17 @@
+<div id="modal-error-template" style="display:none">
+  <div class="modal-header bg-danger text-white">
+    <h4 class="modal-title" id="missionModalLabel">
+    <i class="fas fa-exclamation-circle"></i>
+    [[name]]
+    </h4>
+    <button type="button" class="close" ng-click='ctrl.cancel()' aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div>[[description]]</div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" ng-click='ctrl.cancel()'>OK</button>
+  </div>
+</div>

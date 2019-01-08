@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header">
+    <i class="fas fa-grip-lines fa-lg float-right"></i>
+    <i class="fas fa-user fa-fw"></i>
+    Player
+  </div>
+  <div class="card-body">
+    <table class="table table-sm table-hover">
+      <tbody>
+        <tr>
+          <td>
+            <b>Name</b>
+          </td>
+          <td>
+            <span>{{playerName}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>IP Address</b>
+          </td>
+          <td>
+            <span>{{ip}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Connection</b>
+          </td>
+          <td>
+            {{ws}}
+            <i class="fas fa-check text-success" ng-if="$root.ws && $root.ws.readyState == 1"></i>  
+            <i class="fas fa-exclamation-triangle text-danger" ng-if="$root.ws.readyState != 1"></i>  
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Team</b>
+          </td>
+          <td>
+            <span>{{teamName}}</span>
+            <i class="fas fa-exclamation-triangle text-danger" ng-if="!teamName"></i>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

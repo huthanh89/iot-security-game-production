@@ -53,6 +53,9 @@ nav{
   height: 40px;
 }
 
+#teams-container {
+  min-height: 200px;
+}
 .selected {
   border: 2px rgba(199, 101, 101, 0.993) solid;
   color: rgb(182, 88, 88);
@@ -74,18 +77,13 @@ nav{
 }
 
 .item {
-  position: absolute;
+  position:  absolute;
   min-width: 33%;
 }
 
 @media only screen and (min-width: 1200px) {
   .item {
     width: 33%;
-  }
-  .container{
-    width: 95%;
-    max-width: 100%;
-    background: none;
   }
 }
 

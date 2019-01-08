@@ -7,12 +7,12 @@
 
 angular.module('gameApp').factory('WebSocketService', function($rootScope, PlayerData){
 
-  var reconnect = true;
-  var url       = 'ws://' + window.location.host + '/instructor'
-  var ws        = new WebSocket(url);
+  let reconnect = true;
+  let url       = 'ws://' + window.location.host + '/instructor'
+  let ws        = new WebSocket(url);
   window.ws     = ws;
   
-  return {
+  let service = {
 
     connectToWS: function () {
 
@@ -21,7 +21,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
       ws.onclose = function() {
         if (reconnect) {
           setTimeout(function() {
-            ws.connectToWS();
+            service.connectToWS();
           }, 2000);
         }
       };
@@ -109,6 +109,8 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
       };
     }
   }
+
+  return service;
 
 });
 

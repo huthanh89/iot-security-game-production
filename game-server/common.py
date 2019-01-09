@@ -19,6 +19,20 @@ class Team():
 			data["players"].append(p.toJSON());
 		return data
 
+	def serialize(self):
+		return self.toJSON()
+
+	def deserialize(self, data):
+		self.name = data["name"]
+		self.score = data["score"]
+		self.players = []
+
+		# assigned from _game
+		#for playerData in data["players"]:
+		#	player = Player("", "")
+		#	player.deserialize(playerData)
+		#	self.players.append(player)
+
 # a player belongs to a team, uses IP address to identify
 # has a view (student dashboard) websocket, kali ws, and device (pi)
 class Player():
@@ -47,6 +61,16 @@ class Player():
 			"kaliIp": self.kaliWs.ip if self.kaliWs != None else "",
 			"pi": self.device.toJSON() if self.device else {}
 		}
+
+	def serialize(self):
+		return self.toJSON()
+
+	def deserialize(self, data):
+		self.id = data["id"]
+		self.ip = data["ip"]
+		self.name = data["name"]
+		self.score = data["score"]
+		self.team = data["team"]
 
 # a pi device identified by IP
 # can belong to a player and used by multiple missions

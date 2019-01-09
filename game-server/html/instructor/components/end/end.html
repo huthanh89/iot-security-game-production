@@ -1,0 +1,29 @@
+<button class="btn btn-danger btn-sm my-2 my-sm-0 ml-2 mr-2" type="button" data-toggle="modal" data-target="#end-game-modal" ng-if="$root.gameStarted">
+  <i class="fas fa-stop mr-1" ></i>
+  <b>
+    End
+  </b>
+</button>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="end-game-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">End Game</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+        <div class="modal-body">
+         Do you want to end the game?
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ok()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -109,6 +109,11 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               } 
               
               else if (type == 'endgame') {
+
+                  console.log("end game");
+                  $rootScope.openEndGameModal(msg);
+
+                  /*
                   var winner = msg['winner'];
                   if ($rootScope.loggedInUser.username == winner) {
                       $rootScope.missionCompleted = true;
@@ -117,6 +122,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
                       $rootScope.otherMissionCompleted = true;
                       $rootScope.$applyAsync();
                   }
+                  */
               }
 
           } 

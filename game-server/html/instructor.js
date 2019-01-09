@@ -10,6 +10,8 @@ var app = angular.module('gameApp');
 
 app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) {
 
+    $rootScope.loaded = false;
+
     /** Initialize scope variables. */
     $rootScope.internetEnabled = false;
 
@@ -22,7 +24,7 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
     }
 
     // Connect to Web Socket.
-    
+
     WebSocketService.connectToWS();
     
     // Refresh grid to recalculate grid item positions.
@@ -56,15 +58,16 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
       $rootScope.grid.refreshItems().layout();
     });
 
-
     // When game starts, refresh grid system layout.
     // Since angular1 does not offer a callback for when all component are
     // fully loaded, we make due with window's delay function.
 
-    $rootScope.$on('ws:start', function() {
+    $rootScope.$on('ws:connected', function() {
       if($rootScope.grid){
-        setTimeout(function(){ 
+        setTimeout(function(){
+            console.log("refresh grid")
           $rootScope.refreshGrid();
+          $rootScope.loaded = true;
       }, 2000);
       }
     });

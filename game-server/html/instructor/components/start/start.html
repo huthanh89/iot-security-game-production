@@ -3,4 +3,23 @@
   <b>
     Start
   </b>
-</button>        
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="load_auto_save-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Load Auto Save?</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        A previous session was found. Load it?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal" ng-click="loadAutoSave(false)">No</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="loadAutoSave(true)">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

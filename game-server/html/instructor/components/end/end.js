@@ -10,9 +10,12 @@ function Controller($scope, $rootScope){
       type: 'endGame',
     }));
 
+    /*
+    // should show some stats on the instructor side
     setTimeout(function(){
         location.reload();
     }, 1000)
+    */
   }
 
 }

@@ -35,11 +35,30 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
 
           if (type == 'player') {
               PlayerData.updatePlayerData(msg);
-          } 
+          }
+
+          else if ( type == 'connected' )
+          {
+              $rootScope.$broadcast('ws:connected', msg);
+          }
           
           else if (type == 'device') {
               $rootScope.$broadcast('ws:device', msg);
-          } 
+          }
+
+          else if (type == 'promptLoadAutoSave')
+          {
+
+              var intervalId = setInterval(function()
+              {
+                  if ( $rootScope.loaded ){
+                      console.log("prompt load auto save")
+                      $('#load_auto_save-modal').modal('show')
+                      clearInterval(intervalId);
+                  }
+              }, 2000);
+
+          }
           
           else if (type == 'started') {
               $rootScope.gameStarted = true;

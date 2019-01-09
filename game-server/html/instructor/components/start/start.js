@@ -63,6 +63,16 @@ function Controller($scope, $rootScope, $location, PlayerData){
     ws.send(JSON.stringify(data));
   }
 
+
+
+  $scope.loadAutoSave = function(bResponse) {
+    ws.send(JSON.stringify({
+      type: 'loadAutoSave',
+      response: bResponse
+    }));
+  }
+
+
 }
 
 //------------------------------------------------------------------------------//

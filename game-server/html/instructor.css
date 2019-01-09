@@ -53,9 +53,44 @@ nav{
   height: 40px;
 }
 
+#teams-left-button{
+  width: 40%;
+  max-width: 80px;
+}
+
+#teams-right-button{
+  width: 40%;
+  max-width: 80px;
+}
+
 #teams-container {
   min-height: 200px;
 }
+
+.teams-list-container{
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.teams-item{
+  margin:  0;
+  padding: 0;
+  border: rgb(197, 197, 197) 1px solid;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 1366px) {
+  .teams-list-container{
+    padding: 5px;
+  }
+  .teams-item{
+    padding: 0 10px;
+    text-align: left;
+  }
+}
+
 .selected {
   border: 2px rgba(199, 101, 101, 0.993) solid;
   color: rgb(182, 88, 88);

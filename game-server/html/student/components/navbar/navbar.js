@@ -17,6 +17,11 @@ function Controller($scope, $rootScope){
         content: "This is the main GameBoard. This is where your missions, which are indicated by Circles, will be displayed. To start a mission, click on an unlocked Circle. Unlocked Circles are yellow, locked Circles are gray, and completed Circles are blue. And that's it! Click on the center circle of the rings to begin the game. Good luck and have fun!"
       },
       {
+        element: "#navbar-playerinfo",
+        title:   "Player",
+        content: "This blue icon means you have established a connection with the game server. You can click here to view player information such as username, team name, and IP address."
+      },
+      {
         element: "#chat",
         title:   "Chat",
         content: "In the Chat panel, you can send messages to other players. Several channels are available, such as a global chat and team chat.  You can also send messages directly to specific players or your instructor. Remember to keep your communications civil!"

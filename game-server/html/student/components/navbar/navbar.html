@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark">
-  <div ng-click="player()">
+  <div id='navbar-playerinfo' ng-click="player()">
     <i class="fas fa-wifi mr-2 text-info" ng-if="$root.ws && $root.ws.readyState == 1"></i>  
     <i class="fas fa-exclamation-triangle mr-2 text-danger" ng-if="$root.ws.readyState != 1"></i>  
     <a class="navbar-brand mr-auto" href="#" id="this-element">Student</a>

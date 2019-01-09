@@ -165,6 +165,19 @@ nav{
   max-height: 150px;
 }
 
+#mission-html-container .hint i{
+  display: block;
+  font-weight: bold;
+  color: red;
+}
+
+#mission-html-container .quiz-button i{
+  display: block;
+  font-weight: bold;
+  color: red;
+  margin-top: 10px;
+}
+
 #gameboard-container{
   overflow-x: auto;
 }

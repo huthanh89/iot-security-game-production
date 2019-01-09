@@ -49,6 +49,11 @@ nav{
   border: 2px rgba(199, 198, 198, 0.24) solid;
 }
 
+#players-table {
+  max-height: 600px;
+  overflow:   auto;
+}
+
 #chat-to{
   height: 40px;
 }

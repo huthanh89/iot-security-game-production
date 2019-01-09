@@ -10,7 +10,7 @@ http://localhost:8080/instructor-dashboard.html?cheat
 
 Open student dashboard:
 
-http://localhost:8080/student-dashasdfboard.html?ip=10.1.101.11  
+http://localhost:8080/student-dashboard.html?ip=10.1.101.11  
 
 # Web Development setup.
 

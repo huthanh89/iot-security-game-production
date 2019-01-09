@@ -5,13 +5,12 @@
 // ws://game-server.local:8080/player
 //-------------------------------------------------------------------------------//
 
-angular.module('gameApp').factory('WebSocketService', function($rootScope){
+angular.module('gameApp').factory('WebSocketService', function($rootScope, $location){
 
   let reconnect = true;
   let url       = 'ws://' + window.location.host + '/player'
   let ws        = new WebSocket(url);
-  let urlParams = new URLSearchParams(window.location.search);
-  let ip        = urlParams.get('ip')
+  let ip        = $location.search().ip;
   $rootScope.ip = ip;
   $rootScope.ws = ws;
 

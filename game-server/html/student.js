@@ -2,7 +2,18 @@
 // Acquire application module
 //------------------------------------------------------------------------------//
 
-var app = angular.module('gameApp', ['ui.bootstrap' , 'angular-bind-html-compile']);
+var app = angular.module('gameApp', ['ui.bootstrap' , 'angular-bind-html-compile'])
+
+//------------------------------------------------------------------------------//
+// Module configurations
+//------------------------------------------------------------------------------//
+
+app.config(function($locationProvider){
+  $locationProvider.html5Mode( {
+    enabled:     true,
+    requireBase: false
+  });
+});
 
 //-------------------------------------------------------------------------------//
 // Main Controller

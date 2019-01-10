@@ -47,8 +47,8 @@ angular.module('gameApp').directive('scoreboardPopoverDirective', function($root
     });
 
     $(element).popover({
-      html: true,
-      title: '',
+      html:     true,
+      title:   '',
       trigger: 'hover',
       content: 
         `
@@ -60,7 +60,7 @@ angular.module('gameApp').directive('scoreboardPopoverDirective', function($root
               </tr>
             </thead>
             <tbody>
-              ${tableRows.toString()}
+              ${tableRows.join('')}
             </tbody>
           </table>
         `

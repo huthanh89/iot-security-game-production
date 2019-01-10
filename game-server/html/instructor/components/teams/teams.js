@@ -139,6 +139,8 @@ function Controller($scope, $rootScope, $location, PlayerData){
         alert("Enter Team Name");
     }
 
+    $('#team-add-modal').modal('hide');
+
   }
 
   /** Function to update team name*/
@@ -172,6 +174,7 @@ function Controller($scope, $rootScope, $location, PlayerData){
         }
     });
 
+    $('#team-edit-modal').modal('hide');
   }
 
   /** Function to remove team */

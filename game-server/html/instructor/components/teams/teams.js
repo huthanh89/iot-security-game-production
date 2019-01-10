@@ -210,6 +210,18 @@ function Controller($scope, $rootScope, $location, PlayerData){
     $(`#team-${type}-modal`).appendTo("body");
   }
 
+  // Focus input when add modal is shown.
+
+  $('#team-add-modal').on('shown.bs.modal', function(){
+    $('#team-add-modal-input').focus();
+  });
+
+  // Focus input when edit modal is shown.
+
+  $('#team-edit-modal').on('shown.bs.modal', function(){
+    $('#team-edit-modal-input').focus();
+  });
+
 }
 
 //------------------------------------------------------------------------------//

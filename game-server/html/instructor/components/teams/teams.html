@@ -87,7 +87,7 @@
       </div>
       <div class="modal-body">
         <label>Team Name</label>
-        <input type="text" class="form-control" ng-model="teamText" ng-keyup="$event.keyCode == 13 ? addTeam() : null" >
+        <input type="text" id='team-add-modal-input' class="form-control" ng-model="teamText" ng-keyup="$event.keyCode == 13 ? addTeam() : null" >
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal" ng-click='teamText = ""'>Cancel</button>
@@ -108,7 +108,7 @@
       </div>
       <div class="modal-body">
         <label>Team Name</label>
-        <input type="text" class="form-control" ng-model="teamText" ng-keyup="$event.keyCode == 13 ? updateTeamName(team, teamText) : null" >
+        <input id='team-edit-modal-input' type="text" class="form-control" ng-model="teamText" ng-keyup="$event.keyCode == 13 ? updateTeamName(team, teamText) : null" >
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal" ng-click='removeTeam(team, $index)'>

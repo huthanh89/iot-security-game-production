@@ -287,3 +287,16 @@ nav{
   margin-right: 5px; 
 }
 
+#endgame-scoreboard{
+  overflow: auto;
+  max-height: 60vh;
+}
+
+.endgame-list {
+  margin: 25px 10px;
+}
+
+.endgame-item{
+  height:  35px;
+  padding: 5px 10px;
+}

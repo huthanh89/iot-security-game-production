@@ -74,6 +74,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               else if (type == 'scores') {
                 $rootScope.$broadcast('ws:scores', msg);
                 $rootScope.$broadcast('ws:chatlist', msg);
+                $rootScope.$broadcast('ws:endscores', msg);
                 $rootScope.$applyAsync();
               } 
               
@@ -110,7 +111,6 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               
               else if (type == 'endgame') {
 
-                  console.log("end game");
                   $rootScope.openEndGameModal(msg);
 
                   /*

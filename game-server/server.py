@@ -169,6 +169,10 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
                     sendToInstructor("started", {})
                     sendGameStateToAll()
 
+            elif msg["type"] == "getCurrentGameState":
+                if _game:
+                    sendGameStateToAll()
+
             elif msg["type"] == "endGame":
                 stats = {"scores": getScores()}
                 sendToAllPlayers("endgame", stats)
@@ -176,8 +180,8 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
                 print("ending game")
 
             elif msg["type"] == "resetGame":
+                sendToAll("resetGame", {})
                 resetGame()
-                sendToAll("resetGame")
 
             elif msg["type"] == "chat":
                 to = msg["to"]

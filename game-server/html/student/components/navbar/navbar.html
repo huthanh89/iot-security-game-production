@@ -2,7 +2,14 @@
   <div id='navbar-playerinfo' ng-click="player()">
     <i class="fas fa-wifi mr-2 text-info" ng-if="$root.ws && $root.ws.readyState == 1"></i>  
     <i class="fas fa-exclamation-triangle mr-2 text-danger" ng-if="$root.ws.readyState != 1"></i>  
-    <a class="navbar-brand mr-auto" href="#" id="this-element">Student</a>
+    <a class="navbar-brand mr-auto" href="#" id="this-element">
+      <span ng-show="!$root.playerName">
+        Students
+      </span>
+      <span ng-show="$root.playerName">
+        {{$root.playerName}}
+      </span>
+    </a>
   </div>
   <button class='btn btn-outline-info text-light border-light' ng-click="tour()" ng-show="!$root.waiting"> 
     <i class="fas fa-question"></i>

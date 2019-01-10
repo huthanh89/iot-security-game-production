@@ -25,7 +25,8 @@ port = sys.argv[1]
 noCheckInstructorVlan = "nocheck" in sys.argv
 noSwitch = "noswitch" in sys.argv
 
-startNewSession = "nosave" in sys.argv
+#startNewSession = "nosave" in sys.argv
+
 
 
 # global vars
@@ -37,6 +38,8 @@ _devices = {}
 _unclaimedKalis = []
 _switchSsh = None
 _internetEnabled = False
+_autoSaveExists = os.path.isfile('autosave.json')
+_autoSaveChoiceSelected = False
 
 #device template
 c2960 = {
@@ -128,9 +131,15 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
             "enabled": _internetEnabled
         })
 
-        if _game:
-            sendToInstructor("started", {})
-            sendGameStateToAll()
+        sendToInstructor("connected", {})
+
+        if _autoSaveExists and _autoSaveChoiceSelected == False:
+            sendToInstructor("promptLoadAutoSave", {})
+        else:
+            if _game:
+                sendToInstructor("started", {})
+                sendGameStateToAll()
+
 
     def on_close(self):
         print("instructor view disconnected")
@@ -141,7 +150,7 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
         print("instructor view received: ", message)
         # db.log(self.request.remote_ip, "instructor_msg", argStr = message)
-        global _players, _teams, _game, _internetEnabled, _switchSsh
+        global _players, _teams, _game, _internetEnabled, _switchSsh, _autoSaveChoiceSelected
         try:
             ssh_command = ""
             msg = json.loads(message)
@@ -150,9 +159,25 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
                 otherConfig = msg["otherConfig"]
                 startGame(teamConfig, otherConfig, False)
 
+            elif msg["type"] == "loadAutoSave":
+                _autoSaveChoiceSelected = True;
+                autosave_response = msg["response"]
+                print("autosave response", autosave_response)
+
+                if autosave_response:
+                    loadAutoSave()
+                    sendToInstructor("started", {})
+                    sendGameStateToAll()
+
             elif msg["type"] == "endGame":
-                resetGame()
+                stats = {"scores": getScores()}
+                sendToAllPlayers("endgame", stats)
+
                 print("ending game")
+
+            elif msg["type"] == "resetGame":
+                resetGame()
+                sendToAll("resetGame")
 
             elif msg["type"] == "chat":
                 to = msg["to"]
@@ -294,7 +319,7 @@ def sendGameStateToAll():
     sendToAll("gameboard", {"gameboard": _game.toJSON()})
 
 # sorts teams by score and send to all
-def sendScores():
+def getScores():
     sortedTeams = list(_teams)
     sortedTeams = sorted(sortedTeams, key=attrgetter('name'))
     sortedTeams = sorted(sortedTeams, key=attrgetter('score'), reverse=True)
@@ -304,7 +329,10 @@ def sendScores():
         team = sortedTeams[i]
         scores.append(team.toJSON())
 
-    sendToAll("scores", { "scores": scores })
+    return scores
+
+def sendScores():
+    sendToAll("scores", { "scores": getScores() })
 
 # get domain names from the game and write to dns file and restart dns server
 def setDns():
@@ -709,7 +737,7 @@ def restoreGameState():
         print("game restore error: " + str(e))
         traceback.print_exc()
 
-def checkAutoSave():
+def loadAutoSave():
     try:
         f = open("autosave.json", "r")
         startGame(None, None, True)
@@ -756,8 +784,8 @@ application = tornado.web.Application([
     (r'/(.*)', tornado.web.StaticFileHandler, {'path': root + '/html', "default_filename": index})
 ], **settings)
 
-if startNewSession != True:
-    checkAutoSave()
+#if startNewSession != True:
+#    checkAutoSave()
 
 httpServer = application.listen(port)
 print("started on port: " + str(port))

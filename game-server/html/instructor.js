@@ -68,6 +68,12 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
             console.log("refresh grid")
           $rootScope.refreshGrid();
           $rootScope.loaded = true;
+
+          // request game state
+            ws.send(JSON.stringify({
+              type: 'getCurrentGameState',
+            }));
+
       }, 2000);
       }
     });

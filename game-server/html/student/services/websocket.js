@@ -125,6 +125,10 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
                   */
               }
 
+              else if (type == "resetGame"){
+                location.reload();
+              }
+
           } 
           
           catch (e) {

@@ -121,6 +121,10 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
                   $rootScope.$applyAsync();
               }
           }
+
+          else if ( type == "resetGame"){
+              location.reload();
+          }
         } 
         
         catch (e) {}

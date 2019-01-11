@@ -3,10 +3,8 @@
 //-------------------------------------------------------------------------------//
 function Controller($scope, $rootScope){
 
-
-
   $scope.ok = function() {
-    ws.send(JSON.stringify({
+    $rootScope.ws.send(JSON.stringify({
       type: 'endGame',
     }));
 
@@ -14,13 +12,10 @@ function Controller($scope, $rootScope){
   }
 
   $scope.resetGame = function() {
-    ws.send(JSON.stringify({
+    $rootScope.ws.send(JSON.stringify({
       type: 'resetGame',
     }));
   }
-
-
-
 
 }
 

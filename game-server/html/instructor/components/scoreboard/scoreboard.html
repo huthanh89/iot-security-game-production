@@ -14,12 +14,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="team in scoreBoard">
+        <tr ng-repeat="team in scoreBoard track by $index">
           <td>  
             {{team.name}}
           </td>
           <td>
-            {{team.score |fixDecimal:2}}
+            {{team.score |number:2}}
           </td>
           <td>  
             <a href="#" data-toggle="popover" scoreboard-popover-directive>

@@ -47,13 +47,15 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
       ws.onmessage = function(event) {
           try {
 
-              let msg = JSON.parse(event.data);
+              let msg  = JSON.parse(event.data);
               let type = msg['type'];
-            
+
               if (type == 'login') {
-                  $rootScope.playerId = msg.id;
-                  $rootScope.teamName = null;
-                  $rootScope.refreshGrid();
+                $rootScope.playerId = msg.id;
+                $rootScope.teamName = null;
+
+                $rootScope.ip = $rootScope.playerId;
+                $rootScope.refreshGrid();
               } 
               
               else if (type == 'chat') {
@@ -66,12 +68,25 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               } 
               
               else if (type == 'started') {
-                  $rootScope.waiting = false;
-                  $rootScope.$applyAsync();
-                  $rootScope.$broadcast('ws:started', msg);
+                $rootScope.waiting = false;
+                $rootScope.$applyAsync();
+                $rootScope.$broadcast('ws:started', msg);
               } 
               
               else if (type == 'scores') {
+
+                // Set team name.
+                
+                msg.scores.forEach(function(team){
+                  team.players.forEach(function(player){
+                    if(player.name == $rootScope.playerName){
+                      $rootScope.teamName = team.name;
+                    }
+                  })
+                })
+
+                // Update views.
+
                 $rootScope.$broadcast('ws:scores', msg);
                 $rootScope.$broadcast('ws:chatlist', msg);
                 $rootScope.$broadcast('ws:endscores', msg);
@@ -98,31 +113,19 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               } 
               
               else if (type == 'incorrectFlag') {
-                  $rootScope.openWrongModal();
+                $rootScope.openWrongModal();
               } 
               
               else if (type == 'error') {
-                  $rootScope.openErrorModal("Error", msg.msg);
+                $rootScope.openErrorModal("Error", msg.msg);
               } 
               
               else if (type == 'levelsCompleted') {
-                  $rootScope.openCompletedModal();
+                $rootScope.openCompletedModal();
               } 
               
               else if (type == 'endgame') {
-
-                  $rootScope.openEndGameModal(msg);
-
-                  /*
-                  var winner = msg['winner'];
-                  if ($rootScope.loggedInUser.username == winner) {
-                      $rootScope.missionCompleted = true;
-                      $rootScope.$applyAsync();
-                  } else {
-                      $rootScope.otherMissionCompleted = true;
-                      $rootScope.$applyAsync();
-                  }
-                  */
+                $rootScope.openEndGameModal(msg);
               }
 
               else if (type == "resetGame"){

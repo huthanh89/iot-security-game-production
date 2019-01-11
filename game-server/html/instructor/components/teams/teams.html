@@ -14,7 +14,7 @@
         </button>
         <table class="table table-sm table-hover">
           <tbody>
-            <tr class='teams-item' ng-class='{"selected" : team.isSelected}' ng-click='unselectAll(team)' ng-repeat='team in teamData.teams'>
+            <tr class='teams-item' ng-class='{"selected" : team.isSelected}' ng-click='unselectAll(team)' ng-repeat='team in teamData.teams track by $index'>
               <td>
                 <i class="fas fa-pencil-alt float-right text-info" data-toggle="modal" data-target="#team-edit-modal" ng-click='clickEditIcon(team, $index)'></i>
               </td>
@@ -50,7 +50,7 @@
               </u>
             </b>
             <ul class="list-group">
-              <li class="list-group-item list-group-item-action py-1 teams-item" ng-repeat="team in teamData.teamPlayers" ng-if='team.selectedTeam == selectedTeam' ng-class='{"selected" : team.isSelected}' ng-click='team.isSelected = !team.isSelected'>
+              <li class="list-group-item list-group-item-action py-1 teams-item" ng-repeat="team in teamData.teamPlayers track by $index" ng-if='team.selectedTeam == selectedTeam' ng-class='{"selected" : team.isSelected}' ng-click='team.isSelected = !team.isSelected'>
                 {{team.name}}
               </li>
             </ul>
@@ -63,7 +63,7 @@
               </u>
             </b>
             <ul class="list-group">
-              <li class="list-group-item list-group-item-action py-1 teams-item" ng-repeat="team in teamData.players" ng-class='{"selected" : team.isSelected}' ng-click='selectPlayer(team)'>
+              <li class="list-group-item list-group-item-action py-1 teams-item" ng-repeat="team in teamData.players track by $index" ng-class='{"selected" : team.isSelected}' ng-click='selectPlayer(team)'>
                 {{team.name}}
               </li>
             </ul>

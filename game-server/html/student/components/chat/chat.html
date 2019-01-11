@@ -9,7 +9,7 @@
       <div class="col-sm-12">
         <span class="chat-to">To:
           <select ng-model="chatTo">
-            <option ng-repeat="to in chatToList" ng-value="to" ng-disabled="to.disabled">{{to.name}}</option>
+            <option ng-repeat="to in chatToList track by $index" ng-value="to" ng-disabled="to.disabled">{{to.name}}</option>
           </select>
         </span>
       </div>

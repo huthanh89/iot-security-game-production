@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-class="{true:'table-danger'}[!player.viewOnline]" ng-repeat="player in players">
+        <tr ng-class="{true:'table-danger'}[!player.viewOnline]" ng-repeat="player in players track by $index">
           <td>  
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.viewOnline"></i>
             <i class="text-success fas fa-check" ng-if="player.viewOnline"></i>

@@ -18,8 +18,8 @@ function Controller($scope, $rootScope){
 
   $scope.ok = function() {
     $rootScope.internetEnabled = $scope.enableInternet;
-    ws.send(JSON.stringify({
-      type: 'internet',
+    $rootScope.ws.send(JSON.stringify({
+      type:   'internet',
       enable: $scope.enableInternet
     }));
   }

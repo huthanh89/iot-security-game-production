@@ -1,4 +1,4 @@
-<div class="card">
+<div id='chat' class="card">
   <div class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="far fa-comments fa-fw"></i>
@@ -9,7 +9,7 @@
       <div class="col-sm-12">
         <span class="chat-to">To:
           <select ng-model="chatTo">
-            <option ng-repeat="to in chatToList" ng-value="to" ng-disabled="to.disabled">{{to.name}}</option>
+            <option ng-repeat="to in chatToList track by $index" ng-value="to" ng-disabled="to.disabled">{{to.name}}</option>
           </select>
         </span>
       </div>
@@ -33,7 +33,3 @@
     </div>
   </div>
 </div>
-
-
-
-

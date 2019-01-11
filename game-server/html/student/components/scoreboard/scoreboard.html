@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="team in scoreBoard">
+        <tr ng-repeat="team in scoreBoard track by $index">
           <td>  
             {{team.name}}
           </td>

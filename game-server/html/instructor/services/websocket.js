@@ -10,7 +10,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
   let reconnect = true;
   let url       = 'ws://' + window.location.host + '/instructor'
   let ws        = new WebSocket(url);
-  window.ws     = ws;
+  $rootScope.ws = ws;
   
   let service = {
 

@@ -2,7 +2,11 @@
 // Acquire application module
 //------------------------------------------------------------------------------//
 
-var app = angular.module('gameApp', ['ui.bootstrap' , 'angular-bind-html-compile'])
+var app = angular.module('gameApp', [
+  'ui.bootstrap', 
+  'angular-bind-html-compile',
+  'ngSanitize'
+]);
 
 //------------------------------------------------------------------------------//
 // Module configurations

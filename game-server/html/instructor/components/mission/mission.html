@@ -69,22 +69,22 @@
               <span>Assign Missions</span>
           </div>
           <div class="col-sm-12 team-container borderLess-cont">
-              <div class="row  text-center inst-mission-player-cont" ng-repeat="i in [3] | makeRange">
-                  <div class="col-sm-4 bodered-cont" ng-repeat="j in [3] | makeRange">
+              <div class="row  text-center inst-mission-player-cont" ng-repeat="i in [3] | makeRange track by $index">
+                  <div class="col-sm-4 bodered-cont" ng-repeat="j in [3] | makeRange track by $index">
                       <span class="dropdown-cont">
                               <select ng-model="arrangeList[i*3+j].missionType" ng-change='updatePlayer(i*3+j)'>
-                                  <option ng-repeat="mission in missionData">{{mission}}</option>
+                                  <option ng-repeat="mission in missionData track by $index">{{mission}}</option>
                               </select>
                           </span>
                       <span class="dropdown-cont">
                               <select ng-model="arrangeList[i*3+j].device">
-                                  <option ng-repeat="device in deviceData" ng-if="!device.isInfrastructure" value="{{device.ip}}">{{device.name}}</option>
+                                  <option ng-repeat="device in deviceData track by $index" ng-if="!device.isInfrastructure" value="{{device.ip}}">{{device.name}}</option>
                               </select>
                           </span>
                       <span class="dropdown-cont">
                               <select ng-model="arrangeList[i*3+j].playerType" ng-change='updatePlayerList(i*3+j)'>
                                   <option value="null"></option>
-                                  <option ng-repeat="player in arrangeList[i*3+j].playerData" value="{{player.id}}">{{player.name}}</option>
+                                  <option ng-repeat="player in arrangeList[i*3+j].playerData track by $index" value="{{player.id}}">{{player.name}}</option>
                               </select>
                           </span>
                   </div>

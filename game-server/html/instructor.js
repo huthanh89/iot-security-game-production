@@ -2,7 +2,7 @@
 // Acquire application module
 //------------------------------------------------------------------------------//
 
-var app = angular.module('gameApp');
+var app = angular.module('gameApp', ['ui.bootstrap', 'ngSanitize']);
 
 //-------------------------------------------------------------------------------//
 // Main Controller
@@ -70,7 +70,7 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
           $rootScope.loaded = true;
 
           // request game state
-            ws.send(JSON.stringify({
+          $rootScope.ws.send(JSON.stringify({
               type: 'getCurrentGameState',
             }));
 

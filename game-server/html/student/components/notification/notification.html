@@ -7,7 +7,7 @@
   <div id='notification-container' class="card-body">
     <table class="table table-sm table-hover table-borderless">
       <tbody>
-        <tr class="" ng-repeat="notification in notifications">
+        <tr class="" ng-repeat="notification in notifications track by $index">
           <td>  
             <i class="far fa-bell"></i>
           </td>

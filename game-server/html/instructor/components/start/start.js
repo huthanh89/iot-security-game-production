@@ -60,13 +60,11 @@ function Controller($scope, $rootScope, $location, PlayerData){
     for (var team in teams)
         data.teams.push(teams[team]);
 
-    ws.send(JSON.stringify(data));
+    $rootScope.ws.send(JSON.stringify(data));
   }
 
-
-
   $scope.loadAutoSave = function(bResponse) {
-    ws.send(JSON.stringify({
+    $rootScope.ws.send(JSON.stringify({
       type: 'loadAutoSave',
       response: bResponse
     }));

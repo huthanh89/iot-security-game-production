@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------//
-// Acquire application module
+// Inject angular services to application.
 //------------------------------------------------------------------------------//
 
 var app = angular.module('gameApp', [
@@ -9,7 +9,7 @@ var app = angular.module('gameApp', [
 ]);
 
 //------------------------------------------------------------------------------//
-// Module configurations
+// Configure application.
 //------------------------------------------------------------------------------//
 
 app.config(function($locationProvider){
@@ -18,6 +18,10 @@ app.config(function($locationProvider){
     requireBase: false
   });
 });
+
+// Enable Hammerjs to allow user text selection.
+
+delete Hammer.defaults.cssProps.userSelect;
 
 //-------------------------------------------------------------------------------//
 // Main Controller
@@ -61,12 +65,24 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
         $rootScope.column3.refreshItems().layout(done);
       }, 1000);
     }
+    
+    // When game starts, refresh grid system layout.
+    // Since angular1 does not offer a callback for when all component are
+    // fully loaded, we make due with window's delay function.
+
+    $rootScope.$on('ws:started', function() {
+      $rootScope.playSound();
+      $rootScope.gameStarted = true;
+      $rootScope.refreshGrid();
+    }); 
 
     let columnGrids = [];
 
-    // Initialize grid when angular has fully loaded.
+    // Run the following code when angular has fully loaded.
 
     angular.element(document).ready(function () {
+
+      // Create drag and drop columns.
 
       let createGrid = function(container){
 
@@ -102,16 +118,6 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
 
     });
 
-    // When game starts, refresh grid system layout.
-    // Since angular1 does not offer a callback for when all component are
-    // fully loaded, we make due with window's delay function.
-
-    $rootScope.$on('ws:started', function() {
-      $rootScope.playSound();
-      $rootScope.gameStarted = true;
-      $rootScope.refreshGrid();
-    });   
-    
   });
 
 //-------------------------------------------------------------------------------//

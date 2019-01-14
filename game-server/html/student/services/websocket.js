@@ -49,7 +49,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
 
               let msg  = JSON.parse(event.data);
               let type = msg['type'];
-
+              
               if (type == 'login') {
                 $rootScope.playerId = msg.id;
                 $rootScope.teamName = null;

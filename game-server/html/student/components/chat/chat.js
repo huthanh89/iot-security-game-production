@@ -12,8 +12,8 @@ function Controller($scope, $rootScope, $sanitize){
     id:   'everyone',
     name: 'Everyone'
   }, {
-    id:   'notification',
-    name: 'Notification'
+    id:   'instructor',
+    name: 'Instructor'
   }];
 
   $scope.chatTo = $scope.chatToList[0];

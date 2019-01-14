@@ -1,8 +1,19 @@
-//------------------------------------------------------------------------------//
-// Acquire application module
-//------------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------//
+// Inject angular services to application.
+//-------------------------------------------------------------------------------//
 
-var app = angular.module('gameApp', ['ui.bootstrap', 'ngSanitize']);
+var app = angular.module('gameApp', [
+  'ui.bootstrap', 
+  'ngSanitize'
+]);
+
+//-------------------------------------------------------------------------------//
+// Configure application.
+//-------------------------------------------------------------------------------//
+
+// Enable Hammerjs to allow user text selection.
+
+delete Hammer.defaults.cssProps.userSelect;
 
 //-------------------------------------------------------------------------------//
 // Main Controller
@@ -10,15 +21,14 @@ var app = angular.module('gameApp', ['ui.bootstrap', 'ngSanitize']);
 
 app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) {
 
-    $rootScope.loaded = false;
-
-    /** Initialize scope variables. */
+    // Initialize scope variables.
+    
+    $rootScope.loaded          = false;
     $rootScope.internetEnabled = false;
+    $rootScope.gameStarted     = false;
 
-    /** Initialize scope variable for update view */
-    $rootScope.gameStarted = false;
+    // Function to play beep sound.
 
-    /** Function to play beep sound */
     $rootScope.playSound = function() {
       document.getElementById('play').play();
     }

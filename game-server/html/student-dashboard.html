@@ -9,6 +9,7 @@
       <!-- Vendor Scripts -->
       
       <link rel="stylesheet" type="text/css" href="vendor/bootstrap-4.2.1.min.css">
+      <link rel="stylesheet" type="text/css" href="vendor/toastr-2.1.4.min.css">
       <link rel="stylesheet" type="text/css" href="vendor/src/css/fontawesome-5.6.1.css">
 
       <script src="vendor/jquery-3.3.1.min.js"></script>
@@ -24,6 +25,7 @@
       <script type="text/javascript"> mxBasePath = 'vendor/src'; </script>
       <script src="vendor/mxClient.min.js"></script>
       <script src="vendor/angular-bind-html-compile.min.js"></script>
+      <script src="vendor/toastr-2.1.4.min.js"></script>
 
       <link rel="stylesheet" type="text/css" href="vendor/bootstrap-tour.min.css">
       <script src="vendor/bootstrap-tour.min.js"></script>
@@ -64,40 +66,55 @@
 
     <!-- Components -->
 
-    <div>
-      <div class="grid">
-        <div class="item">
-          <div ng-show="!waiting">
-            <mission></mission>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-xl-4">
+          <div id="grid1" class="grid">
+            <div class="item">
+              <div ng-show="!waiting">
+                <mission></mission>
+              </div>
+            </div>
+            <div class="item">
+              <div ng-show="!waiting">
+                <tools></tools>
+              </div>
+            </div>
+            <div class="item">
+              <div ng-show="waiting">
+                <player></player>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="item">
-          <div ng-show="!waiting">
-            <gameboard></gameboard>
+        <div class="col-xl-4">
+          <div id="grid2" class="grid">
+            <div class="item">
+              <div ng-show="!waiting">
+                <gameboard></gameboard>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="item">
-          <chat></chat>
-        </div>
-        <div class="item">
-          <div ng-show="!waiting">
-            <scoreboard></scoreboard>
+        <div class="col-xl-4">
+          <div id="grid3" class="grid">
+            <div class="item">
+              <chat></chat>
+            </div>
+            <div class="item">
+                <notification></notification>
+            </div> 
+            <div class="item">
+              <div ng-show="!waiting">
+                <scoreboard></scoreboard>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="item">
-          <div ng-show="!waiting">
-            <tools></tools>
-          </div>
-        </div>
-        <div class="item">
-          <notification></notification>
-        </div>
-        <div class="item">
-          <div ng-show="waiting">
-            <player></player>
-          </div>
-        </div>
+
       </div>
+
     </div>
 
     <!-- Modal Components -->

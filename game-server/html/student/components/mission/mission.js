@@ -34,7 +34,7 @@ function Controller($scope, $rootScope, $uibModal, $sce, $timeout){
         }
     }
     $rootScope.ws.send(JSON.stringify({
-        type: 'quiz',
+        type:   'quiz',
         answers: answers
     }));
   }
@@ -48,8 +48,17 @@ function Controller($scope, $rootScope, $uibModal, $sce, $timeout){
     $scope.missionContent  = msg.text;
     $scope.customHtml      = $sce.trustAsHtml($scope.missionContent);
     $scope.$digest();
-  });
 
+    // Scroll to mission when clicked.
+
+    $('#mission')[0].scrollIntoView(true);
+
+    // Panel's height will change with new content, so we have to 
+    // call grid refresh to incorporate the new panel size.
+
+    $rootScope.refreshGrid();
+
+  });
 
 }
 

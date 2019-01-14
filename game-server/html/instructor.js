@@ -30,32 +30,51 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
     // Refresh grid to recalculate grid item positions.
 
     $rootScope.refreshGrid = function(){
-      if($rootScope.grid){
-        $rootScope.grid.refreshItems().layout();
-      }
+      setTimeout(function(){ 
+        $rootScope.column1.refreshItems().layout();
+        $rootScope.column2.refreshItems().layout();
+        $rootScope.column3.refreshItems().layout();
+      }, 1000);
     }
+
+    let columnGrids = [];
 
     // Initialize grid when angular has fully loaded.
 
-    angular.element(function () {
-      $rootScope.grid = new Muuri('.grid', {
-        items: '.item',
-        dragEnabled: true,
-        dragStartPredicate: {
-          handle: '.card-header'
-        },
-        dragSortPredicate: {
-          action: 'swap'
-        },
-        layout: {
-          fillGaps: true,
-          horizontal: false,
-          alignRight: false,
-          alignBottom: false,
-          rounding: false
-        },
-      });
-      $rootScope.grid.refreshItems().layout();
+    angular.element(document).ready(function () {
+
+      let createGrid = function(container){
+
+        let grid = new Muuri(container, {
+          items:     '.item',
+          dragEnabled: true,
+          dragStartPredicate: {
+            handle: '.card-header'
+          },
+          dragSort: function () {
+            return columnGrids;
+          },
+        })
+        .on('dragStart', function (item) {
+          item.getElement().style.width  = item.getWidth()  + 'px';
+          item.getElement().style.height = item.getHeight() + 'px';
+        })
+        .on('dragReleaseEnd', function (item) {
+          item.getElement().style.width = '';
+          item.getElement().style.height = '';
+          columnGrids.forEach(function (grid) {
+            grid.refreshItems();
+          });
+        });
+
+        columnGrids.push(grid);
+        return grid;
+      }
+
+      $rootScope.column1 = createGrid($('#grid1')[0]);
+      $rootScope.column2 = createGrid($('#grid2')[0]);
+      $rootScope.column3 = createGrid($('#grid3')[0]);
+
     });
 
     // When game starts, refresh grid system layout.
@@ -65,7 +84,6 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
     $rootScope.$on('ws:connected', function() {
       if($rootScope.grid){
         setTimeout(function(){
-            console.log("refresh grid")
           $rootScope.refreshGrid();
           $rootScope.loaded = true;
 

@@ -42,32 +42,64 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
     // Refresh grid to recalculate grid item positions.
 
     $rootScope.refreshGrid = function(){
-      if($rootScope.grid){
-        $rootScope.grid.refreshItems().layout();
+
+      let refreshCount = 0;
+
+      let done = function(){
+        refreshCount++;
+
+        // Start tour when all column fully refreshed.
+
+        if(refreshCount == 3){
+          $rootScope.startTour();
+        }
       }
+
+      setTimeout(function(){ 
+        $rootScope.column1.refreshItems().layout(done);
+        $rootScope.column2.refreshItems().layout(done);
+        $rootScope.column3.refreshItems().layout(done);
+      }, 1000);
     }
+
+    let columnGrids = [];
 
     // Initialize grid when angular has fully loaded.
 
-    angular.element(function () {
-      $rootScope.grid = new Muuri('.grid', {
-        items:     '.item',
-        dragEnabled: true,
-        dragStartPredicate: {
-          handle: '.card-header'
-        },
-        dragSortPredicate: {
-          action: 'swap'
-        },
-        layout: {
-          fillGaps:    true,
-          horizontal:  false,
-          alignRight:  false,
-          alignBottom: false,
-          rounding:    false
-        }
-      });
-      $rootScope.grid.refreshItems().layout();
+    angular.element(document).ready(function () {
+
+      let createGrid = function(container){
+
+        let grid = new Muuri(container, {
+          items:     '.item',
+          dragEnabled: true,
+          dragStartPredicate: {
+            handle: '.card-header'
+          },
+          dragSort: function () {
+            return columnGrids;
+          },
+        })
+        .on('dragStart', function (item) {
+          item.getElement().style.width = item.getWidth() + 'px';
+          item.getElement().style.height = item.getHeight() + 'px';
+        })
+        .on('dragReleaseEnd', function (item) {
+          item.getElement().style.width = '';
+          item.getElement().style.height = '';
+          columnGrids.forEach(function (grid) {
+            grid.refreshItems();
+          });
+        });
+
+        columnGrids.push(grid);
+        return grid;
+      }
+
+      $rootScope.column1 = createGrid($('#grid1')[0]);
+      $rootScope.column2 = createGrid($('#grid2')[0]);
+      $rootScope.column3 = createGrid($('#grid3')[0]);
+
     });
 
     // When game starts, refresh grid system layout.
@@ -75,12 +107,9 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
     // fully loaded, we make due with window's delay function.
 
     $rootScope.$on('ws:started', function() {
-      setTimeout(function(){ 
-        $rootScope.refreshGrid();
-        $rootScope.playSound();
-        $rootScope.startTour();
-        $rootScope.gameStarted = true;
-      }, 2000);
+      $rootScope.playSound();
+      $rootScope.gameStarted = true;
+      $rootScope.refreshGrid();
     });   
     
   });

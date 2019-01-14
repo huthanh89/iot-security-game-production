@@ -9,13 +9,6 @@ body{
   font-family: arial;
 }
 
-.container {
-  background: white;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 nav{
   background: #6CC04A;
@@ -24,6 +17,18 @@ nav{
 
 .navbar-brand{
   letter-spacing: 2px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container-fluid{
+    padding: 0 20%;
+  }
+}
+
+@media only screen and (max-width: 865px) {
+  .container-fluid{
+    padding: 0 5%;
+  }
 }
 
 .card{
@@ -66,41 +71,6 @@ nav{
 .fa-grip-lines:active{
   cursor: grabbing;
 }
-
-/* Dashboard drag and drop - START */
-
-.grid {
-  position: relative;
-}
-
-.item {
-  position: absolute;
-  min-width: 50%;
-}
-
-@media only screen and (min-width: 1080px) {
-  .item {
-    max-width: 50%;
-  }
-}
-
-@media only screen and (max-width: 1080px) {
-  .item {
-    width: 100%;
-  }
-}
-
-.item.muuri-item-dragging {
-  z-index: 3;
-}
-.item.muuri-item-releasing {
-  z-index: 2;
-}
-.item.muuri-item-hidden {
-  z-index: 0;
-}
-
-/* Dashboard drag and drop - END */
 
 .modal-body img {
   max-width: 100%;
@@ -157,7 +127,8 @@ nav{
 
 #mission-container{
   overflow-y: auto;
-  height:     400px;
+  min-height: 400px;
+  max-height: 90vh;
 }
 
 #mission-container img{
@@ -240,30 +211,14 @@ nav{
 
 /* Dashboard drag and drop - START */
 
-.grid {
-  position: relative;
+.grid{
+  min-height: 100%;
+  width:      100%;
 }
 
 .item {
-  min-width: 33%;
-}
-
-@media only screen and (min-width: 1200px) {
-  .item {
-    width: 33%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .item {
-    width: 50%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .item {
-    width: 100%;
-  }
+  position: absolute;
+  width: 100%;
 }
 
 .item.muuri-item-dragging {
@@ -299,4 +254,8 @@ nav{
 .endgame-item{
   height:  35px;
   padding: 5px 10px;
+}
+
+#toast-container > div {
+  opacity:1;
 }

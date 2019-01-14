@@ -9,12 +9,16 @@ body{
   font-family: arial;
 }
 
-.container {
-  background: none;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+@media only screen and (max-width: 1200px) {
+  .container-fluid{
+    padding: 0 20%;
+  }
+}
+
+@media only screen and (max-width: 865px) {
+  .container-fluid{
+    padding: 0 5%;
+  }
 }
 
 nav{
@@ -112,31 +116,14 @@ nav{
 
 /* Dashboard drag and drop */
 
-.grid {
-  position: relative;
+.grid{
+  min-height: 100%;
+  width:      100%;
 }
 
 .item {
-  position:  absolute;
-  min-width: 33%;
-}
-
-@media only screen and (min-width: 1200px) {
-  .item {
-    width: 33%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .item {
-    width: 50%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .item {
-    width: 100%;
-  }
+  position: absolute;
+  width: 100%;
 }
 
 .item.muuri-item-dragging {

@@ -95,6 +95,7 @@ function Controller($scope, $rootScope, $uibModal){
           var style = graph.getStylesheet().getDefaultVertexStyle();
           style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_ELLIPSE;
           style[mxConstants.STYLE_PERIMETER] = mxPerimeter.EllipsePerimeter;
+          
           graph.addListener(mxEvent.CLICK, function(sender, evt) {
               var e = evt.getProperty('event');
               var cell = evt.getProperty('cell');
@@ -106,6 +107,7 @@ function Controller($scope, $rootScope, $uibModal){
                   evt.consume();
               }
           });
+
           graph.getModel().beginUpdate();
           var xmlFile = "./gameBoard.xml";
           try {
@@ -123,7 +125,9 @@ function Controller($scope, $rootScope, $uibModal){
                       graph.data.levels[cell.getAttribute('level')] = cell;
                   }
               }
-          } finally {
+          } 
+          
+          finally {
               graph.getModel().endUpdate();
               $('#gameboardContainer > svg').css('width', '');
               $('#gameboardContainer > svg').css('margin', 'auto');
@@ -237,12 +241,6 @@ function Controller($scope, $rootScope, $uibModal){
     $scope.gameboardView.view.refresh();
     
     $scope.$applyAsync();
-
-    // Wait a bit, then refresh grid.
-
-    setTimeout(function(){ 
-      $rootScope.refreshGrid();
-    }, 2000);
     
   });
 

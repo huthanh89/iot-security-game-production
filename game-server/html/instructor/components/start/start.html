@@ -1,4 +1,4 @@
-<button class="btn btn-success btn-sm my-2 my-sm-0 ml-2 mr-2" ng-click="start()" ng-if="!$root.gameStarted">
+<button id="start-submit" class="btn btn-success btn-sm my-2 my-sm-0 ml-2 mr-2" ng-click="start()" ng-if="!$root.gameStarted">
   <i class="fas fa-play mr-1"></i>
   <b>
     Start
@@ -11,14 +11,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Load Auto Save?</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button id="loadsave-close" type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         A previous session was found. Load it?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal" ng-click="loadAutoSave(false)">No</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="loadAutoSave(true)">Yes</button>
+        <button id="loadsave-modal-cancel" type="button" class="btn btn-secondary mr-1" data-dismiss="modal" ng-click="loadAutoSave(false)">No</button>
+        <button id="loadsave-modal-submit" type="button" class="btn btn-primary" data-dismiss="modal" ng-click="loadAutoSave(true)">Yes</button>
       </div>
     </div>
   </div>

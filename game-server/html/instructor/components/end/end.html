@@ -1,4 +1,4 @@
-<button class="btn btn-danger btn-sm my-2 my-sm-0 ml-2 mr-2" type="button" data-toggle="modal" data-target="#end-game-modal" ng-if="$root.gameStarted">
+<button id='end-submit' class="btn btn-danger btn-sm my-2 my-sm-0 ml-2 mr-2" type="button" data-toggle="modal" data-target="#end-game-modal" ng-if="$root.gameStarted">
   <i class="fas fa-stop mr-1" ></i>
   <b>
     End
@@ -21,13 +21,12 @@
           Do you want to end the game?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="ok()">Yes</button>
+        <button type="button" id="end-modal-cancel" class="btn btn-secondary mr-1" data-dismiss="modal">Cancel</button>
+        <button type="button" id="end-modal-ok" class="btn btn-danger" data-dismiss="modal" ng-click="ok()">Yes</button>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="modal fade" id="reset-game-modal">
   <div class="modal-dialog">
@@ -42,7 +41,7 @@
         <scoreboard></scoreboard>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetGame()">Reset Game</button>
+        <button id="end-modal-reset" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetGame()">Reset Game</button>
       </div>
     </div>
   </div>

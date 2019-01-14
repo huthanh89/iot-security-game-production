@@ -1,19 +1,19 @@
-<div class="card">
-  <div class="card-header">
+<div id="device" class="card">
+  <div id="device-header" class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="fas fa-hdd fa-fw"></i>
     Devices
   </div>
   <div class="card-body">
-    <table class="table table-sm table-responsive-sm table-hover">
-      <thead>
+    <table id="device-table" class="table table-sm table-responsive-sm table-hover">
+      <thead id="device-thead">
         <tr>
           <th>ID</th>
           <th>IP</th>
           <th>Online</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="device-tbody">
         <tr ng-repeat="device in deviceData track by $index">
           <td>
             <span>{{device.id}}</span>

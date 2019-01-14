@@ -58,6 +58,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
           }
           
           else if (type == 'started') {
+            $rootScope.gameStarted = true;
             $rootScope.$broadcast('ws:started', msg);
             $rootScope.$applyAsync();
           } 

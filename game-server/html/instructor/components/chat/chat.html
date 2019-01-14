@@ -1,5 +1,5 @@
 <div id='chat' class="card">
-  <div class="card-header">
+  <div id="chat-header" class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="far fa-comments fa-fw"></i>
     Chat
@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-sm-12">
         <span class="chat-to">To:
-          <select ng-model="chatTo">
+          <select id='chat-select' ng-model="chatTo">
             <option ng-repeat="to in chatToList track by $index" ng-value="to" ng-disabled="to.disabled">{{to.name}}</option>
           </select>
         </span>
@@ -19,9 +19,9 @@
         <div id='chathistory'>
         </div>
         <div class="input-group input-group-sm">
-          <input type="text" class="form-control" placeholder="Type a message" id="comment" ng-model="chatMsg" ng-keyup="$event.keyCode == 13 ? sendChat() : null"></input>
+          <input type="text" id="chat-input" class="form-control" placeholder="Type a message" ng-model="chatMsg" ng-keyup="$event.keyCode == 13 ? sendChat() : null"></input>
           <div class="input-group-append">
-            <button class="btn btn-primary" ng-click="sendChat()">
+            <button d="chat-send" class="btn btn-primary" ng-click="sendChat()">
               <i class="fas fa-paper-plane mr-1"></i>
               <span>
                 Send

@@ -1,5 +1,5 @@
-<div class="card">
-  <div class="card-header">
+<div id='player' class="card">
+  <div id='player-header' class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="far fa-user fa-fw"></i>
     Players
@@ -15,7 +15,7 @@
           <th>Pi</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id='player-tbody'>
         <tr ng-class="{true:'table-danger'}[!player.viewOnline]" ng-repeat="player in players track by $index">
           <td>  
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.viewOnline"></i>

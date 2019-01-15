@@ -92,18 +92,17 @@ app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) 
     // fully loaded, we make due with window's delay function.
 
     $rootScope.$on('ws:connected', function() {
-      if($rootScope.grid){
-        setTimeout(function(){
-          $rootScope.refreshGrid();
-          $rootScope.loaded = true;
 
-          // request game state
-          $rootScope.ws.send(JSON.stringify({
-              type: 'getCurrentGameState',
-            }));
+      setTimeout(function(){
+        $rootScope.refreshGrid();
+        $rootScope.loaded = true;
+
+        // request game state
+        $rootScope.ws.send(JSON.stringify({
+            type: 'getCurrentGameState',
+          }));
 
       }, 2000);
-      }
     });
 
 });

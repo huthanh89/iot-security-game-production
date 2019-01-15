@@ -8,12 +8,13 @@ function Controller($scope, $rootScope){
 
   $scope.scoreBoard = [];
 
-  /** Function to get scores from score board */
+  // Function to get scores from score board.
+
   function getScores(scoreboard) {
     var scores = [];
     for (var i in scoreboard) {
         scores.push({
-            name: scoreboard[i].name,
+            name:  scoreboard[i].name,
             score: scoreboard[i].score
         });
     }
@@ -40,7 +41,7 @@ angular.module('gameApp').directive('scoreboardPopoverDirective', function() {
   return function(scope, element, attrs) {
     
     let tableRows = [];
-    let players = scope.team.players;
+    let players   = scope.team.players;
 
     players.forEach(function(player){
       tableRows.push(`<tr><td>${player.name}</td><td>${player.score}</td></tr>`);

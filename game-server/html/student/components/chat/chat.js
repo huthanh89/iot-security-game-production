@@ -4,24 +4,33 @@
 
 function Controller($scope, $rootScope, $sanitize){
 
+  function defaultList (){
+    return [
+      {
+        id:   'everyone',
+        name: 'Everyone'
+      }, 
+      {
+        id:   'instructor',
+        name: 'Instructor'
+      }
+    ];
+  }
+
   // Initialize scope variable for chat view.
   
   $scope.chatHistory = '';
   $scope.chatMsg     = '';
-  $scope.chatToList  = [{
-    id:   'everyone',
-    name: 'Everyone'
-  }, {
-    id:   'instructor',
-    name: 'Instructor'
-  }];
-
-  $scope.chatTo = $scope.chatToList[0];
+  $scope.chatToList  = defaultList();
+  $scope.chatTo      = $scope.chatToList[0];
 
   // Function to update the chat to the list.
   
   $scope.updateChatToList = function(teams) {
     
+    $scope.chatToList = defaultList();
+    $scope.chatTo = $scope.chatToList[0];
+
     // Add teams to drop down list selection.
 
     $scope.chatToList.push({ 

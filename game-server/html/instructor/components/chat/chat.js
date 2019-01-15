@@ -4,24 +4,33 @@
 
 function Controller($scope, $rootScope, $sanitize){
 
+  function defaultList (){
+    return [
+      {
+        id:   'everyone',
+        name: 'Everyone'
+      }, 
+      {
+        id:   'notification',
+        name: 'Notification'
+      }
+    ];
+  }
+
   // Initialize scope variable for chat view.
   
   $scope.chatHistory = '';
   $scope.chatMsg     = '';
-  $scope.chatToList  = [{
-    id:   'everyone',
-    name: 'Everyone'
-  }, {
-    id:   'notification',
-    name: 'Notification'
-  }];
-
-  $scope.chatTo = $scope.chatToList[0];
-
+  $scope.chatToList  = defaultList();
+  $scope.chatTo      = $scope.chatToList[0];
+  
   // Function to update the chat to the list.
   
   $scope.updateChatToList = function(teams) {
     
+    $scope.chatToList = defaultList();
+    $scope.chatTo = $scope.chatToList[0];
+
     // Add teams to drop down list selection.
 
     $scope.chatToList.push({ 
@@ -36,6 +45,7 @@ function Controller($scope, $rootScope, $sanitize){
         id:  `team:${team.name}`,
         name: team.name });
     }
+
 
     // Add players to drop down list selection.
 
@@ -114,7 +124,7 @@ function Controller($scope, $rootScope, $sanitize){
 //------------------------------------------------------------------------------//
 
 angular.module('gameApp').component('chat', {
-  templateUrl: 'student/components/chat/chat.html',
+  templateUrl: 'instructor/components/chat/chat.html',
   controller:   Controller
 });
 

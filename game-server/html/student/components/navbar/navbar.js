@@ -68,7 +68,9 @@ function Controller($scope, $rootScope){
   // Open modal showing player info.
 
   $scope.player = function(){
-    $rootScope.openProfileModal();
+    if($rootScope.gameStarted){
+      $rootScope.openProfileModal();
+    }
   };
 
 }

@@ -1,5 +1,5 @@
 <div id="notification" class="card">
-  <div class="card-header">
+  <div id="notification-header" class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="fas fa-bullhorn fa-fw"></i>
     Notifications
@@ -7,7 +7,7 @@
   <div id='notification-container' class="card-body">
     <table class="table table-sm table-hover table-borderless">
       <tbody>
-        <tr class="" ng-repeat="notification in notifications track by $index">
+        <tr ng-repeat="notification in notifications track by $index">
           <td>  
             <i class="far fa-bell"></i>
           </td>

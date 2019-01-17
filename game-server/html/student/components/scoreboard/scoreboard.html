@@ -1,10 +1,10 @@
 <div id="scoreboard" class="card">
-  <div class="card-header">
+  <div id="scoreboard-header" class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="fas fa-list-ol fa-fw"></i>
     Scoreboard
   </div>
-  <div class="card-body">
+  <div id="scoreboard-body" class="card-body">
     <table class="table table-sm table-hover">
       <thead>
         <tr>
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="team in scoreBoard">
+        <tr id="scoreboard-table-rows" ng-repeat="team in scoreBoard">
           <td>  
             {{team.name}}
           </td>

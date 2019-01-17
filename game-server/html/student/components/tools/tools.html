@@ -1,14 +1,14 @@
 <div id="tools" class="card">
-  <div class="card-header">
+  <div id="tools-header" class="card-header">
     <i class="fas fa-grip-lines fa-lg float-right"></i>
     <i class="fas fa-tools fa-fw"></i>
     Tools
   </div>
   <div id="tools-container" class="card-body">
 
-    <table class="table table-sm table-hover table-borderless">
+    <table id="tools-table" class="table table-sm table-hover table-borderless">
       <tbody>
-        <tr class="" ng-repeat="tool in currentTools track by $index" ng-Click='itemClicked($index)'>
+        <tr ng-repeat="tool in currentTools track by $index" ng-Click='itemClicked($index)'>
           <td>  
             <div class="tools-image-container">
               <img class="tools-image" ng-src="{{tool.img}}" />

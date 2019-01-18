@@ -8,7 +8,7 @@ function Controller($scope, $rootScope){
     container: "body",
     debug:      false,
     orphan:     true,
-    storage:    false,
+    storage:    sessionStorage,
     backdrop:   true,
     steps: [
       {
@@ -51,17 +51,17 @@ function Controller($scope, $rootScope){
 
   // Initialize the tour.
 
-  tour.init();
-
+  
   // If user requests, restart the tour.
   
   $scope.tour = function(){
     tour.restart();
   };
-
+  
   // Start initial tour.
-
+  
   $rootScope.startTour = function(){
+    tour.init();
     tour.start();
   }
 

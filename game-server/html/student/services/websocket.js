@@ -20,11 +20,15 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
 
       ws.onopen = function() {
 
-        let name = $rootScope.playerName;
+        let name = sessionStorage.getItem("playername");
 
         while ((name == null) || (name == "") || (name.length > 12)) {
           name = prompt("Enter Name (12 character limit)");
         }
+
+        // Store player name in local storage.
+
+        sessionStorage.setItem("playername", name);
 
         $rootScope.playerName = name;
 
@@ -54,6 +58,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
                 $rootScope.playerId = msg.id;
                 $rootScope.teamName = null;
                 $rootScope.ip       = $rootScope.playerId;
+                $rootScope.refreshGrid();
               } 
               
               else if (type == 'chat') {

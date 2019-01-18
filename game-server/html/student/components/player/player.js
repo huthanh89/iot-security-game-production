@@ -16,6 +16,10 @@ function Controller($scope, $rootScope){
     $scope.ip = value;
   });
 
+  $scope.editName = function(){
+    $rootScope.openNameModal();
+  };
+
 }
 
 //------------------------------------------------------------------------------//

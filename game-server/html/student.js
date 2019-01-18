@@ -55,7 +55,9 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
         // Start tour when all column fully refreshed.
 
         if(refreshCount == 3){
-          $rootScope.startTour();
+          if($rootScope.gameStarted){
+            $rootScope.startTour();
+          }
         }
       }
 

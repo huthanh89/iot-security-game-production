@@ -1,0 +1,26 @@
+<div id="modal-name-template" style="display:none">
+  <div class="modal-header bg-info text-white">
+    <h4 class="modal-title" id="missionModalLabel">
+    <i class="fas fa-user"></i>
+    Player
+    </h4>
+    <button type="button" class="close" ng-click='ctrl.cancel()' aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="modal-name-playername">Name</label>
+        <input type="text" class="form-control" ng-model="ctrl.name" id="modal-name-playername" placeholder="Enter Name" maxLength="12">
+        <small  class="text-muted"> 12 character limit </span>
+      </div>
+    </form>
+    <h1>
+      {{ctrl.name}}
+    </h1>
+  </div>
+  <div class="modal-footer">
+      <button id="modal-name-submit" class="btn btn-primary" ng-click='ctrl.ok()'>OK</button>
+  </div>
+</div>

@@ -77,11 +77,11 @@ def connectToSwitch():
 
     except (NetMikoTimeoutException, NetMikoAuthenticationException,) as e:
         print("Unable to connect to switch due to: %s ", str(e))
-        connectToSwitch()
+        #connectToSwitch()
 
     except SSHException as e:
         print("Unable to connect to switch due to: %s ", str(e))
-        connectToSwitch()
+        #connectToSwitch()
 
 
 if not noSwitch:
@@ -315,6 +315,15 @@ def sendToAllPlayers(type, data):
             player.viewWs.write_message(msg)
         except:
             pass
+
+
+def sendToPlayer(player, type, data):
+    data["type"] = type
+    msg = json.dumps(data)
+    try:
+        player.write_message(msg)
+    except:
+        pass
 
 # util function send scores and gameboard to all
 def sendGameStateToAll():

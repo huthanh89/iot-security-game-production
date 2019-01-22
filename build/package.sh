@@ -24,4 +24,6 @@ sshpass -p $PASSWORD ssh -t vitapoly@45.33.41.65 ln -s /var/www/html/iotsec/game
 rm -r game-server
 
 echo $version built
-
+echo tagging build
+cd ../
+git tag -a build_$version -m "Dev Build Version $version"

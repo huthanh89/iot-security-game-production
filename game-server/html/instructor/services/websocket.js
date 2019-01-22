@@ -33,12 +33,14 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
           var msg  = JSON.parse(event.data);
           var type = msg['type'];
 
+          console.log(type);
           if (type == 'player') {
             PlayerData.updatePlayerData(msg);
           }
 
           else if (type == 'connected' ){
             $rootScope.$broadcast('ws:connected', msg);
+            $rootScope.$applyAsync();
           }
           
           else if (type == 'device') {
@@ -49,6 +51,7 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
           {
             var intervalId = setInterval(function()
             {
+              console.log("prompt load auto save wait:", $rootScope.loaded)
               if ( $rootScope.loaded ){
                 console.log("prompt load auto save")
                 $('#load_auto_save-modal').modal('show')
@@ -100,8 +103,21 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
               });
             }
 
-          } 
-          
+
+          }
+          else if ( type == "noswitch")
+          {
+            var intervalId = setInterval(function()
+            {
+              if ( $rootScope.loaded ){
+                $('#no-switch-modal').modal('show')
+                clearInterval(intervalId);
+              }
+            }, 2000);
+          }
+
+
+
           else if (type == 'grid') {
             $rootScope.gridData = msg.grid;
             $rootScope.$applyAsync();

@@ -9,6 +9,9 @@
       <span id="navbar-playername" ng-show="$root.playerName">
         {{$root.playerName}}
       </span>
+      <span id="navbar-teamname" ng-show="$root.teamName>">
+        ({{$root.teamName}})
+      </span>
     </a>
   </div>
   <button id="navbar-tour-btn" class='btn btn-outline-info text-light border-light' ng-click="tour()" ng-show="!$root.waiting"> 

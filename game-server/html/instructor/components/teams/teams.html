@@ -15,7 +15,7 @@
         <table class="table table-sm table-hover">
           <tbody>
             <tr class='teams-item' ng-class='{"selected" : team.isSelected}' ng-click='unselectAll(team)' ng-repeat='team in teamData.teams track by $index'>
-              <td>
+              <td id="teams-team-{{$index}}">
                 <i class="fas fa-pencil-alt float-right text-info" data-toggle="modal" data-target="#team-edit-modal" ng-click='clickEditIcon(team, $index)'></i>
               </td>
               <td>
@@ -51,7 +51,9 @@
             </b>
             <ul class="list-group">
               <li class="list-group-item list-group-item-action py-1 teams-item" ng-repeat="team in teamData.teamPlayers track by $index" ng-if='team.selectedTeam == selectedTeam' ng-class='{"selected" : team.isSelected}' ng-click='team.isSelected = !team.isSelected'>
-                {{team.name}}
+                <span id="teams-member-{{$index}}">
+                  {{team.name}}
+                </span>
               </li>
             </ul>
           </div>
@@ -64,7 +66,9 @@
             </b>
             <ul class="list-group">
               <li class="list-group-item list-group-item-action py-1 teams-item" ng-repeat="team in teamData.players track by $index" ng-class='{"selected" : team.isSelected}' ng-click='selectPlayer(team)'>
-                {{team.name}}
+                <span id="teams-playername-{{$index}}">
+                  {{team.name}}
+                </span>
               </li>
             </ul>
           </div>

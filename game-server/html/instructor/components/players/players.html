@@ -17,21 +17,21 @@
       </thead>
       <tbody id='player-tbody'>
         <tr ng-class="{true:'table-danger'}[!player.viewOnline]" ng-repeat="player in players track by $index">
-          <td>  
+          <td id="player-online-{{$index}}">  
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.viewOnline"></i>
             <i class="text-success fas fa-check" ng-if="player.viewOnline"></i>
           </td>
-          <td>
+          <td id="player-name-{{$index}}">
             {{ player.name }}
           </td>
-          <td>
+          <td id="player-ip-{{$index}}">
             {{ player.ip }}
           </td>
-          <td>
+          <td id="player-kali-{{$index}}">
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.kaliOnline"></i>
             <span>{{player.kaliIp}}</span>
           </td>
-          <td>
+          <td id="player-pi-{{$index}}">
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!player.pi.online"></i>
             <span>{{player.pi.ip}}</span>
           </td>

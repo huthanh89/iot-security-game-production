@@ -15,13 +15,13 @@
       </thead>
       <tbody id="device-tbody">
         <tr ng-repeat="device in deviceData track by $index">
-          <td>
+          <td id="device-id-{{$index}}">
             <span>{{device.id}}</span>
           </td>
-          <td>
+          <td id="device-ip-{{$index}}">
             <span>{{device.ip}}</span>
           </td>
-          <td>
+          <td id="device-online-{{$index}}">
             <i class="text-danger fas fa-exclamation-triangle" ng-if="!device.online"></i>
             <i class="text-success fas fa-check" ng-if="device.online"></i>
           </td>

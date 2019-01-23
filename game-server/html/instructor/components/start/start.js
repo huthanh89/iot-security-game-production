@@ -7,7 +7,7 @@ function Controller($scope, $rootScope, $location, PlayerData){
   // Initialize player and team data.
 
   $scope.playerData = {};
-  $scope.teamData = {
+  $scope.teamData   = {
     teams:       [],
     players:     [],
     teamPlayers: []
@@ -28,13 +28,13 @@ function Controller($scope, $rootScope, $location, PlayerData){
   /** Function to start the game .*/
 
   $scope.start = function() {
-    var data = {
-        'type': 'start',
-        'piCount': 9,
-        'teams': [],
-        'otherConfig': {
-            'cheat': ($location.search().cheat == true)
-        }
+    let data = {
+      'type':   'start',
+      'piCount': 9,
+      'teams':   [],
+      'otherConfig': {
+        'cheat': ($location.search().cheat == true)
+      }
     };
 
     // If no players have been assigned a team,
@@ -50,26 +50,26 @@ function Controller($scope, $rootScope, $location, PlayerData){
     let teams = {}
 
     angular.forEach($scope.teamData.teamPlayers, function(player) {
-        if (teams[player.selectedTeam]) {
-            teams[player.selectedTeam].players.push(player.id);
-        } else {
-            teams[player.selectedTeam] = { name: player.selectedTeam, players: [player.id] }
-        }
+      if (teams[player.selectedTeam]) {
+        teams[player.selectedTeam].players.push(player.id);
+      } else {
+        teams[player.selectedTeam] = { name: player.selectedTeam, players: [player.id] }
+      }
     });
 
-    for (var team in teams)
-        data.teams.push(teams[team]);
+    for (let team in teams){
+      data.teams.push(teams[team]);
+    }
 
     $rootScope.ws.send(JSON.stringify(data));
   }
 
   $scope.loadAutoSave = function(bResponse) {
     $rootScope.ws.send(JSON.stringify({
-      type: 'loadAutoSave',
+      type:    'loadAutoSave',
       response: bResponse
     }));
   }
-
 
 }
 

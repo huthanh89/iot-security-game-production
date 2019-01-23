@@ -16,24 +16,24 @@ angular.module('gameApp').factory('PlayerData', function($rootScope){
       teamPlayers: []
     },
 
-    updatePlayerData: function(player) {
+    update: function(newPlayer) {
 
-      let oldPlayer = service.playerData[player.id];
+      let oldPlayer = service.playerData[newPlayer.id];
   
       if (oldPlayer) {
-        for (var i in player)
-          oldPlayer[i] = player[i];
+        for (let index in newPlayer)
+          oldPlayer[index] = newPlayer[index];
         
-        angular.forEach(service.teamData.players, function(t, i) { 
-          if (t.id == player.id) {
-            t = player;
+        service.teamData.players.forEach(function(player) { 
+          if (player.id == newPlayer.id) {
+            player = newPlayer;
           }
         });
       }
 
       else {
-        service.playerData[player.id] = player;
-        service.teamData.players.push(player);
+        service.playerData[newPlayer.id] = newPlayer;
+        service.teamData.players.push(newPlayer);
       }
 
       $rootScope.$broadcast('players', service);

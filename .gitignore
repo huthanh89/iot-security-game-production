@@ -5,3 +5,5 @@
 game-server/autosave.json
 build/VERSION
 log.db
+game-server/html/package-lock.json
+game-server/html/node_modules

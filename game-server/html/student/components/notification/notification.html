@@ -7,14 +7,14 @@
   <div id='notification-container' class="card-body">
     <table class="table table-sm table-hover table-borderless">
       <tbody>
-        <tr ng-repeat="notification in notifications track by $index">
-          <td>  
+        <tr id="notification-row-{{$index}}" ng-repeat="notification in notifications track by $index">
+          <td id="notification-icon-{{$index}}">  
             <i class="far fa-bell"></i>
           </td>
-          <td style="white-space: nowrap">  
+          <td id="notification-date-{{$index}}" style="white-space: nowrap">  
             {{notification.date | date : "h:mm a"}}
           </td>
-          <td>
+          <td id="notification-msg-{{$index}}">
             {{notification.msg}}
           </td>
         </tr>

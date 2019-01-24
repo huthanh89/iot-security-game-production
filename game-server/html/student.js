@@ -40,10 +40,6 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
       $('#play')[0].play().catch(function(error) {});
     }
 
-    // Connect to Web Socket.
-    
-    WebSocketService.connectToWS();
-
     // Refresh grid to recalculate grid item positions.
 
     $rootScope.refreshGrid = function(){
@@ -83,7 +79,7 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
 
     // Run the following code when angular has fully loaded.
 
-    angular.element(document).ready(function () {
+    angular.element(function () {
 
       // Create drag and drop columns.
 
@@ -118,6 +114,10 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
       $rootScope.column1 = createGrid($('#grid1')[0]);
       $rootScope.column2 = createGrid($('#grid2')[0]);
       $rootScope.column3 = createGrid($('#grid3')[0]);
+
+      // Connect to Web Socket.
+
+      WebSocketService.connectToWS();
 
     });
 

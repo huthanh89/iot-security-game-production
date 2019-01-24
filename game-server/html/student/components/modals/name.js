@@ -3,7 +3,7 @@
 //-------------------------------------------------------------------------------//
 
 function Controller($scope, $rootScope, $uibModal){
-  
+
   $rootScope.openNameModal = function() {
     
     var template = $('#modal-name-template').html();
@@ -21,7 +21,12 @@ function Controller($scope, $rootScope, $uibModal){
         // Update new name in local storage and server.
 
         $ctrl.ok = function() {
+
           let name = this.name
+
+          if(this.name == undefined){
+            return;
+          }
 
           if((name.length) && (name.length < 13)){
             $rootScope.ws.send(JSON.stringify({
@@ -44,6 +49,12 @@ function Controller($scope, $rootScope, $uibModal){
           $uibModalInstance.dismiss('cancel');
         };
 
+        // Focus input when modal is shown.
+
+        $uibModalInstance.rendered.then(function() {
+          $('#modal-name-playername').focus();
+        });
+
       },
       controllerAs: 'ctrl',
       windowClass:  'alert-modal-window',
@@ -51,9 +62,11 @@ function Controller($scope, $rootScope, $uibModal){
       backdrop:     'static'
     });
 
+
     modalInstance.result.then(function(response) {
     }, function() {});
   };
+
 }
 
 //------------------------------------------------------------------------------//

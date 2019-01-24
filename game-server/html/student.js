@@ -31,6 +31,7 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
     
     // Initialize scope variables
 
+    $rootScope.VERSION = VERSION;
     $rootScope.waiting = true;
 
     // Function to play beep sound

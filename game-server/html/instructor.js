@@ -21,8 +21,10 @@ delete Hammer.defaults.cssProps.userSelect;
 
 app.controller('instructorCtrl', function($scope, $rootScope, WebSocketService) {
 
-    // Initialize scope variables.
-    
+  
+  // Initialize scope variables.
+  
+    $rootScope.VERSION         = VERSION;
     $rootScope.loaded          = false;
     $rootScope.internetEnabled = false;
     $rootScope.gameStarted     = false;

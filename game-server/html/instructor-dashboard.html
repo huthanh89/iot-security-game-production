@@ -45,7 +45,7 @@
       <script src="instructor/components/start/start.js"></script>
       <script src="instructor/components/end/end.js"></script>
       <script src="instructor/components/file/file.js"></script>
-
+      <script src="VERSION.js"></script>
 
   </head>
 
@@ -60,7 +60,16 @@
           <end></end>
         </form>
       </nav>
+
+
       <div class="container-fluid">
+
+        <div class="text-right mt-2 text-muted">
+          <small>
+            v.{{VERSION}}
+          </small>
+        </div>
+
         <div class="row">
           <div class="col-xl-4">
             <div id="grid1" class="grid">
@@ -99,7 +108,9 @@
             </div>
           </div>
         </div>
+
       </div>
+
   </body>
   
 </html>

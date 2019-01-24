@@ -136,6 +136,12 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, Playe
           else if ( type == "resetGame"){
             location.reload();
           }
+
+          else if ( type == "getSaveFiles") {
+            console.log("getSaveFiles message")
+            console.log(msg)
+              $rootScope.$broadcast('ws:getSaveFiles', msg);
+          }
         } 
         
         catch (e) {}

@@ -19,6 +19,9 @@ import levels
 from rings import *
 from netmiko import *
 from paramiko import SSHException
+import glob
+import os.path
+
 
 # python server.py 8080 [nocheck]
 port = sys.argv[1]
@@ -41,6 +44,7 @@ _internetEnabled = False
 _autoSaveExists = os.path.isfile('autosave.json')
 _autoSaveChoiceSelected = False
 
+
 #device template
 c2960 = {
     'device_type': 'cisco_ios',
@@ -59,7 +63,6 @@ def resetGame():
     _game = None
     _teams = []
     _players = {}
-
 
     _devices = {}
     _unclaimedKalis = []
@@ -157,7 +160,7 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
             if msg["type"] == "start" and _game == None:
                 teamConfig = msg["teams"]
                 otherConfig = msg["otherConfig"]
-                startGame(teamConfig, otherConfig, False)
+                startGame(teamConfig, otherConfig, None)
 
             elif msg["type"] == "loadAutoSave":
                 _autoSaveChoiceSelected = True;
@@ -227,6 +230,33 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
                         "enabled": _internetEnabled
                     })
 
+            elif msg["type"] == "save":
+                filename = "./saves/"+msg["filename"]+".json"
+                saveGameState(filename)
+                print("save ", filename)
+
+            elif msg["type"] == "load":
+                filename = "./saves/" + msg["filename"] + ".json"
+                loadSaveFile(filename)
+                print("load ", filename)
+
+            elif msg["type"] == "delete":
+                filename = "./saves/"+msg["filename"]+".json"
+                if os.path.isfile(filename):
+                    os.remove(filename)
+                    print("removed file", filename)
+
+            elif msg["type"] == "getSaveFiles":
+                save_files = [ os.path.splitext(os.path.basename(x))[0] for x in glob.glob('./saves/*.json')]
+                save_files.sort()
+                sendToInstructor("getSaveFiles", {
+                    "save_files" : save_files
+                })
+                print(save_files)
+
+
+
+
             else:
                 raise Exception("Invalid msg type")
 
@@ -239,7 +269,7 @@ class InstructorViewHandler(tornado.websocket.WebSocketHandler):
             db.log(self.request.remote_ip, "instructor_msg_error", argStr = message)
             db.log("app", "error", argStr = traceback.format_exc())
 
-def startGame(teamConfig, otherConfig, auto_load_save):
+def startGame(teamConfig, otherConfig, saveFileName):
     global _players, _teams, _game, _internetEnabled
 
     print("startGame", teamConfig)
@@ -254,9 +284,9 @@ def startGame(teamConfig, otherConfig, auto_load_save):
     # create game
     # _game = TicTacToe(_teams, _players, _devices)
     _game = Rings(_teams, _players, _devices)
-    if auto_load_save:
+    if saveFileName is not None:
         _game.level = levels._levels[0]
-        restoreGameState()
+        restoreGameState(saveFileName)
 
         _game.setup(levels._levels[0], _game.teamConfig, _game.otherConfig, sendGameStateToAll, True)
 
@@ -733,14 +763,14 @@ def saveGameState(filename):
     print("dumping game state")
 
 
-def restoreGameState():
+def restoreGameState(saveFileName):
     global _game
     print("restoreGameState", _game)
     try:
         if _game == None:
             return
 
-        f = open("autosave.json", "r")
+        f = open(saveFileName, "r")
         _game.deserialize(json.loads(f.read()))
         f.close()
 
@@ -751,11 +781,16 @@ def restoreGameState():
         traceback.print_exc()
 
 def loadAutoSave():
+    loadSaveFile("autosave.json")
+
+def loadSaveFile(saveFileName):
     try:
-        f = open("autosave.json", "r")
-        startGame(None, None, True)
+        resetGame()
+        f = open(saveFileName, "r")
+        startGame(None, None, saveFileName)
     except Exception as e:
         traceback.print_exc()
+
 
 levels.loadLevels('../levels')
 

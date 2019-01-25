@@ -27,7 +27,7 @@ delete Hammer.defaults.cssProps.userSelect;
 // Main Controller
 //-------------------------------------------------------------------------------//
 
-app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
+app.controller('studentCtrl', function($scope, $rootScope, WebSocketService, $timeout) {
     
     // Initialize scope variables
 
@@ -58,11 +58,11 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
         }
       }
 
-      setTimeout(function(){ 
+      $timeout(function(){ 
         $rootScope.column1.refreshItems().layout(done);
         $rootScope.column2.refreshItems().layout(done);
         $rootScope.column3.refreshItems().layout(done);
-      }, 1000);
+      });
     }
     
     // When game starts, refresh grid system layout.
@@ -79,7 +79,7 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService) {
 
     // Run the following code when angular has fully loaded.
 
-    angular.element(function () {
+    angular.element(document).ready(function () {
 
       // Create drag and drop columns.
 

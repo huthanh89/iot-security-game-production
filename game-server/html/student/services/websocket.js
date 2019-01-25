@@ -5,7 +5,7 @@
 // ws://game-server.local:8080/player
 //-------------------------------------------------------------------------------//
 
-angular.module('gameApp').factory('WebSocketService', function($rootScope, $location){
+angular.module('gameApp').factory('WebSocketService', function($rootScope, $location, $timeout){
 
   let service = {
     
@@ -20,21 +20,25 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
       
       ws.onopen = function() {
 
-        let name = sessionStorage.getItem("playername");
+        // Use timeout to run code after dom finish rendering.
         
-        if((name == null) || (name == "") || (name.length > 12)) {
-          $rootScope.openNameModal();
-        }else{
-          $rootScope.playerName = name;
-          $rootScope.ws.send(JSON.stringify({
-            type: 'login',
-            name:  name,
-            ip:    $rootScope.ip
-          }));
-        }
+        $timeout(function(){
 
-        $rootScope.$digest();
-        $rootScope.refreshGrid();
+          let name = sessionStorage.getItem("playername");
+
+          if(name == null) {
+            $rootScope.openNameModal();
+          }
+          else{
+            $rootScope.playerName = name;
+            $rootScope.ws.send(JSON.stringify({
+              type: 'login',
+              name:  name,
+              ip:    $rootScope.ip
+            }));
+          }
+          
+        });
       };
 
       ws.onclose = function() {
@@ -57,7 +61,14 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               $rootScope.ip       = $rootScope.playerId;
               $rootScope.refreshGrid();
             } 
-            
+
+            else if (type == 'login') {
+              $rootScope.playerId = msg.id;
+              $rootScope.teamName = null;
+              $rootScope.ip       = $rootScope.playerId;
+              $rootScope.refreshGrid();
+            } 
+
             else if (type == 'chat') {
               if (msg.to == '__notification__') {
                 $rootScope.$broadcast('ws:notification', msg); 

@@ -79,7 +79,7 @@ app.controller('studentCtrl', function($scope, $rootScope, WebSocketService, $ti
 
     // Run the following code when angular has fully loaded.
 
-    angular.element(document).ready(function () {
+    angular.element(function () {
 
       // Create drag and drop columns.
 

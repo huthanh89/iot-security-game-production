@@ -62,13 +62,6 @@ angular.module('gameApp').factory('WebSocketService', function($rootScope, $loca
               $rootScope.refreshGrid();
             } 
 
-            else if (type == 'login') {
-              $rootScope.playerId = msg.id;
-              $rootScope.teamName = null;
-              $rootScope.ip       = $rootScope.playerId;
-              $rootScope.refreshGrid();
-            } 
-
             else if (type == 'chat') {
               if (msg.to == '__notification__') {
                 $rootScope.$broadcast('ws:notification', msg); 

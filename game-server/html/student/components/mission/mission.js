@@ -37,7 +37,7 @@ function Controller($scope, $rootScope, $uibModal, $sce, $timeout){
         type:   'quiz',
         answers: answers
     }));
-  }
+  };
 
   // Show modal
 
@@ -50,13 +50,15 @@ function Controller($scope, $rootScope, $uibModal, $sce, $timeout){
     $scope.$digest();
 
     // Scroll to mission when clicked.
-
+    
     $('#mission')[0].scrollIntoView(true);
 
     // Panel's height will change with new content, so we have to 
     // call grid refresh to incorporate the new panel size.
 
-    $rootScope.refreshGrid();
+    $timeout(function(){ 
+      $rootScope.refreshGrid();
+    }, 2000);
 
   });
 

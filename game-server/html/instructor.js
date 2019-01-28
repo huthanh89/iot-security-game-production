@@ -7,9 +7,16 @@ var app = angular.module('gameApp', [
   'ngSanitize'
 ]);
 
-//-------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------//
 // Configure application.
-//-------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------//
+
+app.config(function($locationProvider){
+  $locationProvider.html5Mode( {
+    enabled:     true,
+    requireBase: false
+  });
+});
 
 // Enable Hammerjs to allow user text selection.
 
